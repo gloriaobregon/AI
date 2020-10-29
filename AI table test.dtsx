@@ -1,0 +1,1096 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/17/2019 11:59:02 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MELNB2130"
+  DTS:CreatorName="APTIGPLC\liaog"
+  DTS:DTSID="{24D6E2C2-4835-4AFE-8DAE-65BAF83623E6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="AI table test"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{D90FF5EC-916A-44FE-9BAC-565AE00A1F5E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{160568AE-BE52-4353-8DFB-ACEDA73C44FE}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALICZk45tYkif5vZsiFgdCQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD+GGQIEGyP3PAOYJJipFKgAAAAAASAAACgAAAAEAAAAAp2DIGNS0Hogrc+I0UiadAYAAAAELbhd0pKkvVXi8+Yf+fRNZgkd0a4VpOhFAAAADDZoRm0Vly2oeTtArQvDZD2R5xY</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{28040f4a-c4ea-4960-90a1-897da5a460e0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\AI Header"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AI Header"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AI]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select 
+[OurReference] as [OurReference],
+[Claim Number] as [Claim_Number],
+[VehicleRegoNo] as [VehicleRegoNo],
+[Assessment Completed Date] as [Assessment Completed Date],
+[AuthorityDate] as [AuthorityDate],
+[DateCreated] as [DateCreated],
+[FinalCost $] as [FinalCost $],
+[Finance Trans Date] as [Finance Trans Date],
+[Finance Transaction Header (Total Amount - GST Excluded)] as [Finance Transaction Header (Total Amount - GST Excluded)],
+[Invoiced Amount (GST Included)] as [Invoiced Amount (GST Included)],
+[Job Status] as [Job Status],
+[JobType] as [JobType],
+[Quoted $] as [Quoted $],
+[Repairer] as [Repairer],
+[RepairerQuoteDate] as [RepairerQuoteDate],
+[Scheme Name] as [Scheme Name],
+[SubScheme Name] as [SubScheme Name],
+[TotalLossPaid] as [TotalLossPaid],
+[Auth_Inc_Tax_$] as [Auth_Inc_Tax_$],
+[Assessor Header (Appr Net Total GST Included)] as [Assessed_inc_tax_$]
+from AI</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AI Header.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[OurReference]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[OurReference]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[OurReference]"
+                      name="OurReference"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[VehicleRegoNo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[VehicleRegoNo]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[VehicleRegoNo]"
+                      name="VehicleRegoNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Repairer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Repairer]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Repairer]"
+                      name="Repairer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[JobType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[JobType]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[JobType]"
+                      name="JobType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[RepairerQuoteDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[RepairerQuoteDate]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[RepairerQuoteDate]"
+                      name="RepairerQuoteDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[AuthorityDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[AuthorityDate]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[AuthorityDate]"
+                      name="AuthorityDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Finance Transaction Header (Total Amount - GST Excluded)]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Finance Transaction Header (Total Amount - GST Excluded)]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Finance Transaction Header (Total Amount - GST Excluded)]"
+                      name="Finance Transaction Header (Total Amount - GST Excluded)"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Scheme Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Scheme Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Scheme Name]"
+                      name="Scheme Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[SubScheme Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[SubScheme Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[SubScheme Name]"
+                      name="SubScheme Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Assessment Completed Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Assessment Completed Date]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Assessment Completed Date]"
+                      name="Assessment Completed Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[DateCreated]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[DateCreated]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[DateCreated]"
+                      name="DateCreated"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Quoted $]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Quoted $]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Quoted $]"
+                      name="Quoted $"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[FinalCost $]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[FinalCost $]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[FinalCost $]"
+                      name="FinalCost $"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[TotalLossPaid]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[TotalLossPaid]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[TotalLossPaid]"
+                      name="TotalLossPaid"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Job Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Job Status]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Job Status]"
+                      name="Job Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Finance Trans Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Finance Trans Date]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Finance Trans Date]"
+                      name="Finance Trans Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Auth_Inc_Tax_$]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Auth_Inc_Tax_$]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Auth_Inc_Tax_$]"
+                      name="Auth_Inc_Tax_$"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Claim_Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Claim_Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Claim_Number]"
+                      name="Claim_Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Assessed_inc_tax_$]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Assessed_inc_tax_$]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Assessed_inc_tax_$]"
+                      name="Assessed_inc_tax_$"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Invoiced Amount (GST Included)]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Invoiced Amount (GST Included)]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Invoiced Amount (GST Included)]"
+                      name="Invoiced Amount (GST Included)"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[OurReference]"
+                      dataType="wstr"
+                      length="255"
+                      name="OurReference" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[VehicleRegoNo]"
+                      dataType="wstr"
+                      length="255"
+                      name="VehicleRegoNo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Repairer]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[JobType]"
+                      dataType="wstr"
+                      length="255"
+                      name="JobType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[RepairerQuoteDate]"
+                      dataType="dbTimeStamp"
+                      name="RepairerQuoteDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[AuthorityDate]"
+                      dataType="wstr"
+                      length="255"
+                      name="AuthorityDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Finance Transaction Header (Total Amount - GST Excluded)]"
+                      dataType="numeric"
+                      name="Finance Transaction Header (Total Amount - GST Excluded)"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Scheme Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Scheme Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[SubScheme Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubScheme Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Assessment Completed Date]"
+                      dataType="dbTimeStamp"
+                      name="Assessment Completed Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[DateCreated]"
+                      dataType="dbTimeStamp"
+                      name="DateCreated" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Quoted $]"
+                      dataType="numeric"
+                      name="Quoted $"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[FinalCost $]"
+                      dataType="numeric"
+                      name="FinalCost $"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[TotalLossPaid]"
+                      dataType="numeric"
+                      name="TotalLossPaid"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Job Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Job Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Finance Trans Date]"
+                      dataType="dbTimeStamp"
+                      name="Finance Trans Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Auth_Inc_Tax_$]"
+                      dataType="numeric"
+                      name="Auth_Inc_Tax_$"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Claim_Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim_Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Assessed_inc_tax_$]"
+                      dataType="numeric"
+                      name="Assessed_inc_tax_$"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].ExternalColumns[Invoiced Amount (GST Included)]"
+                      dataType="numeric"
+                      name="Invoiced Amount (GST Included)"
+                      precision="14"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[OurReference]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[OurReference]"
+                      name="OurReference" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Claim_Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Claim_Number]"
+                      name="Claim_Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Finance Transaction Header (Total Amount - GST Excluded)]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Finance Transaction Header (Total Amount - GST Excluded)]"
+                      name="Finance Transaction Header (Total Amount - GST Excluded)"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Scheme Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Scheme Name]"
+                      name="Scheme Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[SubScheme Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[SubScheme Name]"
+                      name="SubScheme Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Assessment Completed Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Assessment Completed Date]"
+                      name="Assessment Completed Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[DateCreated]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[DateCreated]"
+                      name="DateCreated" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[VehicleRegoNo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[VehicleRegoNo]"
+                      name="VehicleRegoNo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[JobType]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[JobType]"
+                      name="JobType" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Invoiced Amount (GST Included)]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Invoiced Amount (GST Included)]"
+                      name="Invoiced Amount (GST Included)"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Quoted $]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Quoted $]"
+                      name="Quoted $"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[FinalCost $]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[FinalCost $]"
+                      name="FinalCost $"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[TotalLossPaid]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[TotalLossPaid]"
+                      name="TotalLossPaid"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Repairer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Repairer]"
+                      name="Repairer" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[RepairerQuoteDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[RepairerQuoteDate]"
+                      name="RepairerQuoteDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[AuthorityDate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[AuthorityDate]"
+                      name="AuthorityDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Job Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Job Status]"
+                      name="Job Status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Finance Trans Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Finance Trans Date]"
+                      name="Finance Trans Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Auth_Inc_Tax_$]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Auth_Inc_Tax_$]"
+                      name="Auth_Inc_Tax_$"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Assessed_inc_tax_$]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[Assessed_inc_tax_$]"
+                      name="Assessed_inc_tax_$"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\AI header table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="AI header table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AI.header]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AI header table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].Columns[OurReference]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="OurReference"
+                      externalMetadataColumnId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[OurReference]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[OurReference]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].Columns[VehicleRegoNo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="VehicleRegoNo"
+                      externalMetadataColumnId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[VehicleRegoNo]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[VehicleRegoNo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].Columns[Repairer]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repairer"
+                      externalMetadataColumnId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[Repairer]"
+                      lineageId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output].Columns[Repairer]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[OurReference]"
+                      dataType="wstr"
+                      length="16"
+                      name="OurReference" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[VehicleRegoNo]"
+                      dataType="wstr"
+                      length="255"
+                      name="VehicleRegoNo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[Repairer]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[ConversionFeeInvoiceAmountExcGST]"
+                      dataType="wstr"
+                      length="16"
+                      name="ConversionFeeInvoiceAmountExcGST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[ClaimNumber]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClaimNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[AssessmentCompletedDate]"
+                      dataType="dbTimeStamp"
+                      name="AssessmentCompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[AuthorityDate]"
+                      dataType="dbTimeStamp"
+                      name="AuthorityDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[FinalCos$]"
+                      dataType="numeric"
+                      name="FinalCos$"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[FinanceTransDate]"
+                      dataType="dbTimeStamp"
+                      name="FinanceTransDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[FinanceTransactionHeaderGSTExcluded]"
+                      dataType="numeric"
+                      name="FinanceTransactionHeaderGSTExcluded"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[InvoicedAmountGSTIncluded]"
+                      dataType="numeric"
+                      name="InvoicedAmountGSTIncluded"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[JobStatus]"
+                      dataType="wstr"
+                      length="255"
+                      name="JobStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[JobType]"
+                      dataType="wstr"
+                      length="255"
+                      name="JobType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[Quoted$]"
+                      dataType="numeric"
+                      name="Quoted$"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[RepairerQuoteDate]"
+                      dataType="dbTimeStamp"
+                      name="RepairerQuoteDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[SchemeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="SchemeName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[SubSchemeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="SubSchemeName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[TotalLossPaid$]"
+                      dataType="numeric"
+                      name="TotalLossPaid$"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[Assessedinctax$]"
+                      dataType="numeric"
+                      name="Assessedinctax$"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input].ExternalColumns[InitAsses$]"
+                      dataType="numeric"
+                      name="InitAsses$"
+                      precision="14"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AI header table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI header table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AI header table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AI header table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AI header table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Conditional Split 3"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split 3"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Conditional Split 3.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split 3.Inputs[Conditional Split Input].Columns[Conversion Fee-InvoiceAmount Exc GST]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Conversion Fee-InvoiceAmount Exc GST"
+                      lineageId="Package\Data Flow Task\1861:invalid" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split 3.Outputs[Valid]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Valid"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split 3.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Data Flow Task\1861:invalid}) || (DT_I4)#{Package\Data Flow Task\1861:invalid} &gt;= 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL([Conversion Fee-InvoiceAmount Exc GST]) || (DT_I4)[Conversion Fee-InvoiceAmount Exc GST] &gt;= 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split 3.Outputs[Invalid]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Invalid"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split 3.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split 3.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split 3.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split 3.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split 3.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split 3.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split 3.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Multicast 5"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast 5">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Multicast 5.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Multicast 5.Outputs[Multicast Output 1]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Data Flow Task\Multicast 5.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Invalid]"
+              endId="Package\Data Flow Task\Multicast 5.Inputs[Multicast Input 1]"
+              name="Invalid"
+              startId="Package\Data Flow Task\Conditional Split 3.Outputs[Invalid]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Conditional Split 3.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\AI Header.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Valid]"
+              endId="Package\Data Flow Task\AI header table.Inputs[OLE DB Destination Input]"
+              name="Valid"
+              startId="Package\Data Flow Task\Conditional Split 3.Outputs[Valid]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\Conditional Split 3"
+          TopLeft="136,127" />
+        <NodeLayout
+          Size="122,42"
+          Id="Package\Data Flow Task\Multicast 5"
+          TopLeft="217,211" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task\AI header table"
+          TopLeft="83,209" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Data Flow Task\AI Header"
+          TopLeft="139,39" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Valid]"
+          TopLeft="180.666666666667,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-32.6666666666667,40"
+              Start="0,0"
+              End="-32.6666666666667,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.2917933130699" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.2917933130699"
+                    Point2="0,16.2917933130699"
+                    Point3="-4,16.2917933130699" />
+                  <mssgle:LineSegment
+                    End="-28.6666666666667,16.2917933130699" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-28.6666666666667,16.2917933130699"
+                    Point2="-32.6666666666667,16.2917933130699"
+                    Point3="-32.6666666666667,20.2917933130699" />
+                  <mssgle:LineSegment
+                    End="-32.6666666666667,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.6845052083333,21.2917933130699,22.70234375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="202,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Invalid]"
+          TopLeft="221.333333333333,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.6666666666667,42"
+              Start="0,0"
+              End="56.6666666666667,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.1063829787234" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.1063829787234"
+                    Point2="0,17.1063829787234"
+                    Point3="4,17.1063829787234" />
+                  <mssgle:LineSegment
+                    End="52.6666666666667,17.1063829787234" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.6666666666667,17.1063829787234"
+                    Point2="56.6666666666667,17.1063829787234"
+                    Point3="56.6666666666667,21.1063829787234" />
+                  <mssgle:LineSegment
+                    End="56.6666666666667,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="13.0687434895834,22.1063829787234,30.5291796875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

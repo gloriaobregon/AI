@@ -1,0 +1,2098 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/6/2020 11:12:44 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AU00065"
+  DTS:CreatorName="IGAD\LiaoG"
+  DTS:DTSID="{982A736A-8626-4A65-A74B-9E28E4DFE488}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="CDS 29"
+  DTS:PackageType="5"
+  DTS:VersionBuild="84"
+  DTS:VersionGUID="{69631C23-C143-45BE-BE9C-9A9ECDF1D612}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Historical]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{98AAB43B-D037-4B28-A2B6-232B3893A34F}"
+      DTS:ObjectName="Historical">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\29 Internal_Operational - Vehicle Fleet Size Report\Historical Data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B3615664-AEEB-4DF2-95CC-75C5D57DB766}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU693FpSvuUGAHTemc9ME+gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC7szqNL2UuGbJ36N/uJxFTAAAAAASAAACgAAAAEAAAAMXEiyyEzUzYn872fmkhJ3UYAAAADhcvG+vUDxvgivxeUXYc1ZzKanMDeTFSFAAAAGI03/IIlrnCkADsBA6VG63G8HtC</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[New Historical Data]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{F2A9B441-79A7-4923-BE54-EE5057184FE0}"
+      DTS:ObjectName="New Historical Data">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3081"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\29 Internal_Operational - Vehicle Fleet Size Report\New Historical Data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Division"
+              DTS:DTSID="{49270F2E-5CC5-4F42-AC53-4C2A33FA4558}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Report Date"
+              DTS:DTSID="{C25C7D86-CB6E-4D6A-97A4-46E34A8C3217}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="83"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Consolidator Group"
+              DTS:DTSID="{818AFDBB-F24A-4418-A85C-6452FDE3FE53}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="21"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Lease Type"
+              DTS:DTSID="{D51802A8-6DC3-42B2-A32C-72A4BBB8078B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="17"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Insurance Type"
+              DTS:DTSID="{DA3AFEF9-FC31-404E-9088-911C8AE24684}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="17"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="REGO"
+              DTS:DTSID="{3263DFC8-2789-4D82-A12B-F6EFD2040398}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Vehicle Count]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{1C64B9B3-7DD7-4665-A657-662B6D4E14F9}"
+      DTS:ObjectName="Vehicle Count">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\29 Internal_Operational - Vehicle Fleet Size Report\Vehicle Count Fast Track.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{40D8A4A8-1DFB-4A48-B08B-2122C9A0409A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B3615664-AEEB-4DF2-95CC-75C5D57DB766}"
+          SQLTask:SqlStatementSource="Truncate table [CDS.29 New Data];Truncate table [CDS.29];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\New and Historical Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4C48ED0E-E96E-4966-959B-2C49FB3C04B9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="New and Historical Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\New and Historical Data\CDS29 New Data"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="CDS29 New Data"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CDS.29 New Data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\New and Historical Data\CDS29 New Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].Columns[Report Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Report Date"
+                      externalMetadataColumnId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Report Date]" />
+                    <inputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].Columns[Division]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Division"
+                      externalMetadataColumnId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Division]" />
+                    <inputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].Columns[Consolidator Group]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consolidator Group"
+                      externalMetadataColumnId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Consolidator Group]"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].Columns[Consolidator Group]" />
+                    <inputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].Columns[Lease Type]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Lease Type"
+                      externalMetadataColumnId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Lease Type]"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Lease Type]" />
+                    <inputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].Columns[Insurance Type]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Insurance Type"
+                      externalMetadataColumnId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Type]"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Insurance Type]" />
+                    <inputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].Columns[REGO]"
+                      cachedDataType="r8"
+                      cachedName="REGO"
+                      externalMetadataColumnId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[REGO]"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].Columns[REGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="8"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator Group" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Lease Type]"
+                      dataType="wstr"
+                      length="10"
+                      name="Lease Type" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Type]"
+                      dataType="wstr"
+                      length="14"
+                      name="Insurance Type" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input].ExternalColumns[REGO]"
+                      dataType="r8"
+                      name="REGO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\New and Historical Data\CDS29 New Data.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New and Historical Data\CDS29 New Data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New and Historical Data\CDS29 New Data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New and Historical Data\CDS29 New Data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\New and Historical Data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\New and Historical Data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\New and Historical Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Lease Type]"
+                      name="Lease Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Fast Track"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Fast Track"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Insurance Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Insurance Type]"
+                      name="Insurance Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Fast Track TBD"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Fast Track TBD"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Division]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Division]"
+                      name="Division"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Sureplan"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Sureplan"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output].Columns[Report Date]"
+                      name="Report Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEADD]("mi",-1,(DT_DATE)(DT_DBDATE)[DATEADD]("dd",0,[DATEADD]("dd",-1 * ([DAY]([GETDATE]()) - 1),[DATEADD]("month",0,[GETDATE]()))))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEADD("mi",-1,(DT_DATE)(DT_DBDATE)DATEADD("dd",0,DATEADD("dd",-1 * (DAY(GETDATE()) - 1),DATEADD("month",0,GETDATE()))))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\New and Historical Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\New and Historical Data\Vehicle Count"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Vehicle Count"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Vehicle Count Fast Track$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\New and Historical Data\Vehicle Count.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Vehicle Count]"
+                  connectionManagerRefId="Package.ConnectionManagers[Vehicle Count]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].Columns[REGO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].ExternalColumns[Count]"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].Columns[REGO]"
+                      name="REGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].Columns[Consolidator Group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].ExternalColumns[Cons]"
+                      length="255"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].Columns[Consolidator Group]"
+                      name="Consolidator Group"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].ExternalColumns[Count]"
+                      dataType="r8"
+                      name="Count" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].ExternalColumns[Cons]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cons" />
+                    <externalMetadataColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[Count]"
+                      dataType="r8"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[Count]"
+                      name="Count" />
+                    <outputColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[Cons]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[Cons]"
+                      name="Cons" />
+                    <outputColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\New and Historical Data.Paths[Derived Column Output]"
+              endId="Package\New and Historical Data\CDS29 New Data.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\New and Historical Data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\New and Historical Data.Paths[Excel Source Output]"
+              endId="Package\New and Historical Data\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\New and Historical Data\Vehicle Count.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Union and appending to Historical Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F55DE970-78B8-4920-839E-29F9054213A3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Union and appending to Historical Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Union and appending to Historical Data\CDS29"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="CDS29"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[CDS.29]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Union and appending to Historical Data\CDS29.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].Columns[Division]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Division"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Division]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].Columns[Report Date]"
+                      cachedDataType="date"
+                      cachedName="Report Date"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Report Date]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].Columns[Consolidator Group]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consolidator Group"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Consolidator Group]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Consolidator Group]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].Columns[Lease Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Lease Type"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Lease Type]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Lease Type]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].Columns[Insurance Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Insurance Type"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Type]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Insurance Type]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].Columns[REGO]"
+                      cachedDataType="r8"
+                      cachedName="REGO"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[REGO]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[REGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="255"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator Group" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Lease Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Lease Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurance Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input].ExternalColumns[REGO]"
+                      dataType="r8"
+                      name="REGO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Union and appending to Historical Data\CDS29.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\CDS29.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\CDS29.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\CDS29.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Union and appending to Historical Data\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Union and appending to Historical Data\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Data Conversion.Inputs[Data Conversion Input].Columns[Report Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Report Date"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Report Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Union and appending to Historical Data\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Report Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Report Date]"
+                      name="Copy of Report Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Report Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Union and appending to Historical Data\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Union and appending to Historical Data\Historical Data"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Historical Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Historical Data$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Union and appending to Historical Data\Historical Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Historical]"
+                  connectionManagerRefId="Package.ConnectionManagers[Historical]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Division]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Division]"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Division]"
+                      name="Division"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Report Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Report Date]"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Report Date]"
+                      name="Report Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Consolidator Group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Consolidator Group]"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Consolidator Group]"
+                      name="Consolidator Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Lease Type]"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Lease Type]"
+                      name="Lease Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Insurance Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Insurance Type]"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Insurance Type]"
+                      name="Insurance Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[REGO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[REGO]"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[REGO]"
+                      name="REGO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="255"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Report Date]"
+                      dataType="date"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator Group" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Lease Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Lease Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[Insurance Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurance Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].ExternalColumns[REGO]"
+                      dataType="r8"
+                      name="REGO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Division]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Division]"
+                      name="Division" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Report Date]"
+                      dataType="date"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Consolidator Group]"
+                      name="Consolidator Group" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Lease Type]"
+                      name="Lease Type" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Insurance Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[Insurance Type]"
+                      name="Insurance Type" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[REGO]"
+                      dataType="r8"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[REGO]"
+                      name="REGO" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Union and appending to Historical Data\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Union and appending to Historical Data\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Union and appending to Historical Data\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Union and appending to Historical Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Union and appending to Historical Data\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Union and appending to Historical Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Union and appending to Historical Data\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Union and appending to Historical Data\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Union and appending to Historical Data\New Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="New Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CDS.29 New Data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Union and appending to Historical Data\New Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[REGO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[REGO]"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[REGO]"
+                      name="REGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Consolidator Group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Consolidator Group]"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Consolidator Group]"
+                      name="Consolidator Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Lease Type]"
+                      length="10"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Lease Type]"
+                      name="Lease Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Insurance Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Insurance Type]"
+                      length="14"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Insurance Type]"
+                      name="Insurance Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Division]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Division]"
+                      length="8"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Division]"
+                      name="Division"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Report Date]"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Report Date]"
+                      name="Report Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[REGO]"
+                      dataType="r8"
+                      name="REGO" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator Group" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Lease Type]"
+                      dataType="wstr"
+                      length="10"
+                      name="Lease Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Insurance Type]"
+                      dataType="wstr"
+                      length="14"
+                      name="Insurance Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="8"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[REGO]"
+                      dataType="r8"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[REGO]"
+                      name="REGO" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Consolidator Group]"
+                      name="Consolidator Group" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Lease Type]"
+                      name="Lease Type" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Insurance Type]"
+                      dataType="wstr"
+                      length="14"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Insurance Type]"
+                      name="Insurance Type" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Division]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Division]"
+                      name="Division" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Union and appending to Historical Data\New Historical Data"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="3081"
+              name="New Historical Data">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Union and appending to Historical Data\New Historical Data.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[New Historical Data]"
+                  connectionManagerRefId="Package.ConnectionManagers[New Historical Data]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].Columns[Division]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Division"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Division]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Division]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].Columns[Consolidator Group]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consolidator Group"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Consolidator Group]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Consolidator Group]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].Columns[Lease Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Lease Type"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Lease Type]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Lease Type]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].Columns[Insurance Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Insurance Type"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Insurance Type]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Insurance Type]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].Columns[REGO]"
+                      cachedDataType="r8"
+                      cachedName="REGO"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[REGO]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[REGO]" />
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].Columns[Report Date]"
+                      cachedDataType="date"
+                      cachedName="Report Date"
+                      externalMetadataColumnId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Report Date]"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Report Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[REGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="17"
+                      name="REGO" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Consolidator Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="83"
+                      name="Consolidator Group" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Lease Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="Lease Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Insurance Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="17"
+                      name="Insurance Type" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Division]"
+                      dataType="date"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input].ExternalColumns[Report Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Report Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Union and appending to Historical Data\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3].Columns[REGO]"
+                      cachedDataType="r8"
+                      cachedName="REGO"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[REGO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[REGO]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3].Columns[Consolidator Group]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consolidator Group"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Consolidator Group]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Consolidator Group]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3].Columns[Lease Type]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Lease Type"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Lease Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Lease Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3].Columns[Insurance Type]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Insurance Type"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Insurance Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Insurance Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3].Columns[Division]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Division"
+                      lineageId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output].Columns[Division]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Division]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3].Columns[Copy of Report Date]"
+                      cachedDataType="date"
+                      cachedName="Copy of Report Date"
+                      lineageId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Report Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Report Date]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1]"
+                  hasSideEffects="true"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1].Columns[Division]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Division"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Division]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Division]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1].Columns[Report Date]"
+                      cachedDataType="date"
+                      cachedName="Report Date"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Report Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Report Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1].Columns[Consolidator Group]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consolidator Group"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Consolidator Group]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Consolidator Group]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1].Columns[Lease Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Lease Type"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Lease Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Lease Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1].Columns[Insurance Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Insurance Type"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[Insurance Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Insurance Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1].Columns[REGO]"
+                      cachedDataType="r8"
+                      cachedName="REGO"
+                      lineageId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output].Columns[REGO]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[REGO]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Division]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Division]"
+                      name="Division" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Report Date]"
+                      dataType="date"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Consolidator Group]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Consolidator Group]"
+                      name="Consolidator Group" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Lease Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Lease Type]"
+                      name="Lease Type" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Insurance Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[Insurance Type]"
+                      name="Insurance Type" />
+                    <outputColumn
+                      refId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[REGO]"
+                      dataType="r8"
+                      lineageId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1].Columns[REGO]"
+                      name="REGO" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Union and appending to Historical Data.Paths[Data Conversion Output]"
+              endId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 3]"
+              name="Data Conversion Output"
+              startId="Package\Union and appending to Historical Data\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Union and appending to Historical Data.Paths[Excel Source Output]"
+              endId="Package\Union and appending to Historical Data\Union All.Inputs[Union All Input 1]"
+              name="Excel Source Output"
+              startId="Package\Union and appending to Historical Data\Historical Data.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Union and appending to Historical Data.Paths[Multicast Output 1]"
+              endId="Package\Union and appending to Historical Data\New Historical Data.Inputs[Flat File Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\Union and appending to Historical Data\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Union and appending to Historical Data.Paths[Multicast Output 2]"
+              endId="Package\Union and appending to Historical Data\CDS29.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\Union and appending to Historical Data\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Union and appending to Historical Data.Paths[OLE DB Source Output]"
+              endId="Package\Union and appending to Historical Data\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Union and appending to Historical Data\New Data.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Union and appending to Historical Data.Paths[Union All Output 1]"
+              endId="Package\Union and appending to Historical Data\Multicast.Inputs[Multicast Input 1]"
+              name="Union All Output 1"
+              startId="Package\Union and appending to Historical Data\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{87037681-655F-4D6F-8163-0226CCC604E6}"
+      DTS:From="Package\New and Historical Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Union and appending to Historical Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7E6928A6-AC2D-4159-841C-20A958102F00}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\New and Historical Data" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="155,23" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\New and Historical Data"
+          TopLeft="143,129" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Union and appending to Historical Data"
+          TopLeft="101,223" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="236,171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="237.75,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\New and Historical Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\New and Historical Data\Derived Column"
+          TopLeft="370,24" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\New and Historical Data\CDS29 New Data"
+          TopLeft="639,26" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\New and Historical Data\Vehicle Count"
+          TopLeft="151,23" />
+        <EdgeLayout
+          Id="Package\New and Historical Data.Paths[Derived Column Output]"
+          TopLeft="524,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115,0"
+              Start="0,0"
+              End="107.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="107.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\New and Historical Data.Paths[Excel Source Output]"
+          TopLeft="294,44.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76,0"
+              Start="0,0"
+              End="68.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\New and Historical Data\CDS29 New Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\New and Historical Data\Vehicle Count">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Union and appending to Historical Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Union and appending to Historical Data\Data Conversion"
+          TopLeft="162,138" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Union and appending to Historical Data\Union All"
+          TopLeft="334,133" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Union and appending to Historical Data\New Data"
+          TopLeft="14,135" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Union and appending to Historical Data\New Historical Data"
+          TopLeft="497,249" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Union and appending to Historical Data\Historical Data"
+          TopLeft="325,19" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Union and appending to Historical Data\Multicast"
+          TopLeft="522,136" />
+        <NodeLayout
+          Size="110,42"
+          Id="Package\Union and appending to Historical Data\CDS29"
+          TopLeft="713,133" />
+        <EdgeLayout
+          Id="Package\Union and appending to Historical Data.Paths[Union All Output 1]"
+          TopLeft="455,155.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67,0"
+              Start="0,0"
+              End="59.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="59.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Union and appending to Historical Data.Paths[OLE DB Source Output]"
+          TopLeft="139,157.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,0"
+              Start="0,0"
+              End="15.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Union and appending to Historical Data.Paths[Multicast Output 2]"
+          TopLeft="642,155.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71,0"
+              Start="0,0"
+              End="63.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="63.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Union and appending to Historical Data.Paths[Multicast Output 1]"
+          TopLeft="582.25,178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Union and appending to Historical Data.Paths[Excel Source Output]"
+          TopLeft="396.5,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Union and appending to Historical Data.Paths[Data Conversion Output]"
+          TopLeft="292,156.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42,0"
+              Start="0,0"
+              End="34.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Union and appending to Historical Data\New Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Union and appending to Historical Data\Historical Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Union and appending to Historical Data\CDS29">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

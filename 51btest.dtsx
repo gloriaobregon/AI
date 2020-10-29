@@ -1,0 +1,2023 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/22/2020 2:58:20 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AU00008"
+  DTS:CreatorName="IGAD\SanamS"
+  DTS:DTSID="{DB235CFB-6E7F-4B32-AB90-3F7916B85465}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="51btest"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{91872D10-B2C0-4470-A60D-EFBB50ACF1B2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{88402E20-0B75-4963-9AD5-6C8BA8014E63}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\51 Internal_Operational Reporting - Incident Rate\Benchmark Baseline.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C80F6ECA-1CF3-41D8-BFFB-ECC68B0712B8}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU693FpSvuUGAHTemc9ME+gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD5MrMFy1vMQcCv7QDHZTI4AAAAAASAAACgAAAAEAAAANtVih4/TuI+eVPU8RmHSnIYAAAAVfae/WIzg6v8lMtwLks1w0pIGDJvr1D8FAAAAJ4bhVFfPJ5pR2eyIeISsU9Q3vBu</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{76CDFA8B-87E8-4EBA-9EF2-17040BD70C87}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0f280fda-e3aa-484b-b475-f09a6d24d478}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8428F603-C594-4F61-9874-15A402CF5221}"
+          SQLTask:SqlStatementSource="Truncate table [CDS.51bTest]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Upload files"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0A331163-073A-462A-A1A3-555A09925763}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Upload files"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Upload files\Benchmark Baseline"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Benchmark Baseline"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Client Segmentation$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Upload files\Benchmark Baseline.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].Columns[Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      length="255"
+                      lineageId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].Columns[Client]"
+                      name="Client"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].Columns[Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].ExternalColumns[Category]"
+                      length="255"
+                      lineageId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[Client]"
+                      name="Client" />
+                    <outputColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[Category]"
+                      name="Category" />
+                    <outputColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Upload files\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Upload files\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Upload files\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Upload files\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Upload files\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Upload files\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Upload files\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Upload files\FT Claims"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="FT Claims"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FT.FT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Upload files\FT Claims.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Consolidator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Consolidator]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Consolidator]"
+                      name="Consolidator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client]"
+                      name="Client"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Claim Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Claim Number]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Claim Number]"
+                      name="Claim Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Cost inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Cost inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Cost inc tax]"
+                      name="Client Cost inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Report Date]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Report Date]"
+                      name="Report Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Tech Sign Off]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Tech Sign Off]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Tech Sign Off]"
+                      name="Tech Sign Off"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Last Reopen Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Last Reopen Date]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Last Reopen Date]"
+                      name="Last Reopen Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Reopen Reason]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Reopen Reason]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Reopen Reason]"
+                      name="Reopen Reason"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Excess]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Excess]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Excess]"
+                      name="Excess"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[SentTo Insurer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[SentTo Insurer]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[SentTo Insurer]"
+                      name="SentTo Insurer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Cost Centre 1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Cost Centre 1]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Cost Centre 1]"
+                      name="Cost Centre 1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Cost Centre 2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Cost Centre 2]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Cost Centre 2]"
+                      name="Cost Centre 2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Business Unit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Business Unit]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Business Unit]"
+                      name="Business Unit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[PIN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[PIN]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[PIN]"
+                      name="PIN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver PIN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver PIN]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver PIN]"
+                      name="Driver PIN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Employee ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Employee ID]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Employee ID]"
+                      name="Employee ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Operating Arm]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Operating Arm]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Operating Arm]"
+                      name="Operating Arm"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Department]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Department]"
+                      name="Department"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Catastrophe Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Catastrophe Date]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Catastrophe Date]"
+                      name="Catastrophe Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Date]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Date]"
+                      name="Incident Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Time]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Time]"
+                      name="Incident Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident State]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident State]"
+                      name="Incident State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident PostCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident PostCode]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident PostCode]"
+                      name="Incident PostCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Code]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Code]"
+                      name="Incident Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Fault]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Fault]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Fault]"
+                      name="Fault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Damage Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Damage Code]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Damage Code]"
+                      name="Damage Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Damage Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Damage Description]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Damage Description]"
+                      name="Damage Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Purpose of Trip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Purpose of Trip]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Purpose of Trip]"
+                      name="Purpose of Trip"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Vehicle Registration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Registration]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Vehicle Registration]"
+                      name="Vehicle Registration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Vehicle Make]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Make]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Vehicle Make]"
+                      name="Vehicle Make"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Vehicle Model]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Model]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Vehicle Model]"
+                      name="Vehicle Model"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Lease Type]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Lease Type]"
+                      name="Lease Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Drivable]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Drivable]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Drivable]"
+                      name="Drivable"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver First Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver First Name]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver First Name]"
+                      name="Driver First Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver Last Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver Last Name]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver Last Name]"
+                      name="Driver Last Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Insurer Cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Insurer Cost]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Insurer Cost]"
+                      name="Insurer Cost"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Recovered]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Recovered]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Recovered]"
+                      name="Recovered"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Recovered inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Recovered inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Recovered inc tax]"
+                      name="Recovered inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Cost]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Cost]"
+                      name="Client Cost"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[All Payments]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[All Payments]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[All Payments]"
+                      name="All Payments"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[All Payments inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[All Payments inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[All Payments inc tax]"
+                      name="All Payments inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[All Receipts]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[All Receipts]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[All Receipts]"
+                      name="All Receipts"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Outstanding]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Outstanding]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Outstanding]"
+                      name="Client Outstanding"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[TP Involvement]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[TP Involvement]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[TP Involvement]"
+                      name="TP Involvement"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Injuries]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Injuries]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Injuries]"
+                      name="Injuries"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Total Loss]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Total Loss]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Total Loss]"
+                      name="Total Loss"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Repairer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Repairer]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Repairer]"
+                      name="Client Repairer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Repairs Authorised inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Repairs Authorised inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Repairs Authorised inc tax]"
+                      name="Repairs Authorised inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Repairs Invoiced inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Repairs Invoiced inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Repairs Invoiced inc tax]"
+                      name="Repairs Invoiced inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Estimate inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Estimate inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Estimate inc tax]"
+                      name="Estimate inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Vehicle Assessor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Vehicle Assessor]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Client Vehicle Assessor]"
+                      name="Client Vehicle Assessor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Assessed inc tax]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Assessed inc tax]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Assessed inc tax]"
+                      name="Assessed inc tax"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[LOD Sent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[LOD Sent]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[LOD Sent]"
+                      name="LOD Sent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Initial LOD Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Initial LOD Date]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Initial LOD Date]"
+                      name="Initial LOD Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Demand Amount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Demand Amount]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Demand Amount]"
+                      name="Demand Amount"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Recovery Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Recovery Status]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Recovery Status]"
+                      name="Recovery Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Repairs N/R]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Repairs N/R]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Repairs N/R]"
+                      name="Repairs N/R"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Closed Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Closed Date]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Closed Date]"
+                      name="Closed Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Code Group]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Code Group]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Incident Code Group]"
+                      name="Incident Code Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver Inattention Flag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver Inattention Flag]"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[Driver Inattention Flag]"
+                      name="Driver Inattention Flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[TP Outstanding]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[TP Outstanding]"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].Columns[TP Outstanding]"
+                      name="TP Outstanding"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Number" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Cost inc tax]"
+                      dataType="numeric"
+                      name="Client Cost inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Tech Sign Off]"
+                      dataType="dbTimeStamp"
+                      name="Tech Sign Off" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Last Reopen Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Last Reopen Date" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Reopen Reason]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reopen Reason" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Excess]"
+                      dataType="numeric"
+                      name="Excess"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[SentTo Insurer]"
+                      dataType="wstr"
+                      length="255"
+                      name="SentTo Insurer" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Cost Centre 1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cost Centre 1" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Cost Centre 2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cost Centre 2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Business Unit]"
+                      dataType="wstr"
+                      length="255"
+                      name="Business Unit" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[PIN]"
+                      dataType="wstr"
+                      length="255"
+                      name="PIN" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver PIN]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver PIN" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Employee ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Employee ID" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Operating Arm]"
+                      dataType="wstr"
+                      length="255"
+                      name="Operating Arm" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                      dataType="wstr"
+                      length="255"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Catastrophe Date]"
+                      dataType="dbTimeStamp"
+                      name="Catastrophe Date" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Date]"
+                      dataType="dbTimeStamp"
+                      name="Incident Date" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Time]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Time" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident State" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident PostCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident PostCode" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Code" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fault" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Damage Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Damage Code" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Damage Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Damage Description" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Purpose of Trip]"
+                      dataType="wstr"
+                      length="255"
+                      name="Purpose of Trip" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Registration]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Registration" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Make]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Make" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Model]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Model" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Lease Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Lease Type" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Drivable]"
+                      dataType="wstr"
+                      length="255"
+                      name="Drivable" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver First Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver First Name" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver Last Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Last Name" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Insurer Cost]"
+                      dataType="numeric"
+                      name="Insurer Cost"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Recovered]"
+                      dataType="numeric"
+                      name="Recovered"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Recovered inc tax]"
+                      dataType="numeric"
+                      name="Recovered inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Cost]"
+                      dataType="numeric"
+                      name="Client Cost"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[All Payments]"
+                      dataType="numeric"
+                      name="All Payments"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[All Payments inc tax]"
+                      dataType="numeric"
+                      name="All Payments inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[All Receipts]"
+                      dataType="numeric"
+                      name="All Receipts"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Outstanding]"
+                      dataType="numeric"
+                      name="Client Outstanding"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[TP Involvement]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP Involvement" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Injuries]"
+                      dataType="wstr"
+                      length="255"
+                      name="Injuries" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Total Loss]"
+                      dataType="wstr"
+                      length="255"
+                      name="Total Loss" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Repairer]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client Repairer" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Repairs Authorised inc tax]"
+                      dataType="numeric"
+                      name="Repairs Authorised inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Repairs Invoiced inc tax]"
+                      dataType="numeric"
+                      name="Repairs Invoiced inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Estimate inc tax]"
+                      dataType="numeric"
+                      name="Estimate inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Client Vehicle Assessor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client Vehicle Assessor" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Assessed inc tax]"
+                      dataType="numeric"
+                      name="Assessed inc tax"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[LOD Sent]"
+                      dataType="wstr"
+                      length="255"
+                      name="LOD Sent" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Initial LOD Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Initial LOD Date" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Demand Amount]"
+                      dataType="numeric"
+                      name="Demand Amount"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Recovery Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Recovery Status" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Repairs N/R]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairs N/R" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Closed Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Closed Date" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Incident Code Group]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Code Group" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[Driver Inattention Flag]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Inattention Flag" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Output].ExternalColumns[TP Outstanding]"
+                      dataType="r8"
+                      name="TP Outstanding" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Consolidator]"
+                      name="Consolidator" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client]"
+                      name="Client" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Claim Number]"
+                      name="Claim Number" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Cost inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Cost inc tax]"
+                      name="Client Cost inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Tech Sign Off]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Tech Sign Off]"
+                      name="Tech Sign Off" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Last Reopen Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Last Reopen Date]"
+                      name="Last Reopen Date" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Reopen Reason]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Reopen Reason]"
+                      name="Reopen Reason" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Excess]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Excess]"
+                      name="Excess"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[SentTo Insurer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[SentTo Insurer]"
+                      name="SentTo Insurer" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Cost Centre 1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Cost Centre 1]"
+                      name="Cost Centre 1" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Cost Centre 2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Cost Centre 2]"
+                      name="Cost Centre 2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Business Unit]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Business Unit]"
+                      name="Business Unit" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[PIN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[PIN]"
+                      name="PIN" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver PIN]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver PIN]"
+                      name="Driver PIN" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Employee ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Employee ID]"
+                      name="Employee ID" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Operating Arm]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Operating Arm]"
+                      name="Operating Arm" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Department]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Department]"
+                      name="Department" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Catastrophe Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Catastrophe Date]"
+                      name="Catastrophe Date" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Date]"
+                      name="Incident Date" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Time]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Time]"
+                      name="Incident Time" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident State]"
+                      name="Incident State" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident PostCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident PostCode]"
+                      name="Incident PostCode" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Code]"
+                      name="Incident Code" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Fault]"
+                      name="Fault" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Damage Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Damage Code]"
+                      name="Damage Code" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Damage Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Damage Description]"
+                      name="Damage Description" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Purpose of Trip]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Purpose of Trip]"
+                      name="Purpose of Trip" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Vehicle Registration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Vehicle Registration]"
+                      name="Vehicle Registration" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Vehicle Make]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Vehicle Make]"
+                      name="Vehicle Make" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Vehicle Model]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Vehicle Model]"
+                      name="Vehicle Model" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Lease Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Lease Type]"
+                      name="Lease Type" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Drivable]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Drivable]"
+                      name="Drivable" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver First Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver First Name]"
+                      name="Driver First Name" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver Last Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver Last Name]"
+                      name="Driver Last Name" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Insurer Cost]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Insurer Cost]"
+                      name="Insurer Cost"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Recovered]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Recovered]"
+                      name="Recovered"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Recovered inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Recovered inc tax]"
+                      name="Recovered inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Cost]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Cost]"
+                      name="Client Cost"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[All Payments]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[All Payments]"
+                      name="All Payments"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[All Payments inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[All Payments inc tax]"
+                      name="All Payments inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[All Receipts]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[All Receipts]"
+                      name="All Receipts"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Outstanding]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Outstanding]"
+                      name="Client Outstanding"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[TP Involvement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[TP Involvement]"
+                      name="TP Involvement" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Injuries]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Injuries]"
+                      name="Injuries" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Total Loss]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Total Loss]"
+                      name="Total Loss" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Repairer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Repairer]"
+                      name="Client Repairer" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Repairs Authorised inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Repairs Authorised inc tax]"
+                      name="Repairs Authorised inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Repairs Invoiced inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Repairs Invoiced inc tax]"
+                      name="Repairs Invoiced inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Estimate inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Estimate inc tax]"
+                      name="Estimate inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Vehicle Assessor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Client Vehicle Assessor]"
+                      name="Client Vehicle Assessor" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Assessed inc tax]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Assessed inc tax]"
+                      name="Assessed inc tax"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[LOD Sent]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[LOD Sent]"
+                      name="LOD Sent" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Initial LOD Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Initial LOD Date]"
+                      name="Initial LOD Date" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Demand Amount]"
+                      dataType="numeric"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Demand Amount]"
+                      name="Demand Amount"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Recovery Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Recovery Status]"
+                      name="Recovery Status" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Repairs N/R]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Repairs N/R]"
+                      name="Repairs N/R" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Closed Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Closed Date]"
+                      name="Closed Date" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Code Group]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Incident Code Group]"
+                      name="Incident Code Group" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver Inattention Flag]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[Driver Inattention Flag]"
+                      name="Driver Inattention Flag" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[TP Outstanding]"
+                      dataType="r8"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[TP Outstanding]"
+                      name="TP Outstanding" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\FT Claims.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Upload files\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CDS.51 Fast Track Vehicle Listing with Client]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Upload files\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Count]"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Count]"
+                      name="Count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Consolidator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Consolidator]"
+                      length="255"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Consolidator]"
+                      name="Consolidator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Client]"
+                      length="255"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Client]"
+                      name="Client"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Extract Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Extract Date]"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].Columns[Extract Date]"
+                      name="Extract Date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Count]"
+                      dataType="r8"
+                      name="Count" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Extract Date]"
+                      dataType="dbTimeStamp"
+                      name="Extract Date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Count]"
+                      dataType="r8"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Count]"
+                      name="Count" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Consolidator]"
+                      name="Consolidator" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Client]"
+                      name="Client" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Extract Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Extract Date]"
+                      name="Extract Date" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Upload files\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Upload files.Paths[Excel Source Output]"
+              endId="Package\Upload files\Conditional Split.Inputs[Conditional Split Input]"
+              name="Excel Source Output"
+              startId="Package\Upload files\Benchmark Baseline.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{79342A9D-3B73-4104-A6C9-45BABAF3F7AD}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Upload files" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="145,271" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Upload files"
+          TopLeft="60,153" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="145,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18,51"
+              Start="0,0"
+              End="-18,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="-4,25.5" />
+                  <mssgle:LineSegment
+                    End="-14,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14,25.5"
+                    Point2="-18,25.5"
+                    Point3="-18,29.5" />
+                  <mssgle:LineSegment
+                    End="-18,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Upload files">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Upload files\OLE DB Source"
+          TopLeft="135,84" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Upload files\Benchmark Baseline"
+          TopLeft="134,174" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Upload files\FT Claims"
+          TopLeft="142,283" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Upload files\Conditional Split"
+          TopLeft="395,168" />
+        <EdgeLayout
+          Id="Package\Upload files.Paths[Excel Source Output]"
+          TopLeft="307,192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88,0"
+              Start="0,0"
+              End="80.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="80.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Upload files\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Upload files\Benchmark Baseline">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Upload files\FT Claims">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,2473 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/23/2019 9:44:40 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AU00065"
+  DTS:CreatorName="IGAD\LiaoG"
+  DTS:DTSID="{679EBE6A-2B68-4678-BCA4-6EF3F9FA3580}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="CDS 55"
+  DTS:PackageType="5"
+  DTS:VersionBuild="97"
+  DTS:VersionGUID="{E2DB727D-BE5C-4D7F-8F1D-6D70CBE5F2AF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Audit Data]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3C7B77B4-A413-448A-AF83-4803A04AB7AC}"
+      DTS:ObjectName="Audit Data">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\55 Internal_Suncorp Suncorp Call Audits\Raw Audit data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{664CEB49-9B96-44A9-B97E-2641E8F27203}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8LSz1tw2q0GZyAN10YvF1gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC49MJAuXJWVAz+DNTTTYuyAAAAAASAAACgAAAAEAAAALNXBqyt+wKcyOfhQZtlvosYAAAAxrQ2oVHz8n/VDKSPkdC+xnzpwcXU9KLBFAAAAFwSLXfb0csKNO/iZBoRWIp/hMbX</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C7770CDC-56AF-42C0-AC4B-7116DE8685EC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Audit Data"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Audit Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Audit Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Audit Data]"
+                  connectionManagerRefId="Package.ConnectionManagers[Audit Data]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Consultant Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Consultant Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Consultant Name]"
+                      name="Consultant Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Claim Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Number]"
+                      name="Claim Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Audit Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Audit Date]"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Audit Date]"
+                      name="Audit Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Auditor Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]"
+                      name="Auditor Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy  ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Privacy  ]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy  ]"
+                      name="Privacy  "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Outbound Disclaimer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Outbound Disclaimer]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Outbound Disclaimer]"
+                      name="Outbound Disclaimer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Review and Searches]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Claim Review and Searches]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Review and Searches]"
+                      name="Claim Review and Searches"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Assessment Booking]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Assessment Booking]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Assessment Booking]"
+                      name="Assessment Booking"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Hire Car]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Hire Car]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Hire Car]"
+                      name="Hire Car"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy Statement Option]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Privacy Statement Option]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy Statement Option]"
+                      name="Privacy Statement Option"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Adherence to General Insurance Code of Practice]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]"
+                      name="Adherence to General Insurance Code of Practice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Clarified call understanding]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Clarified call understanding]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Clarified call understanding]"
+                      name="Clarified call understanding"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Updating Third Party Details]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]"
+                      name="Updating Third Party Details"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Providing Correct Information]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]"
+                      name="Providing Correct Information"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Informs and Confirms the Next Steps ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Informs and Confirms the Next Steps ]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Informs and Confirms the Next Steps ]"
+                      name="Informs and Confirms the Next Steps "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Customer Service]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Customer Service]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Customer Service]"
+                      name="Customer Service"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Progressed Claim]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Progressed Claim]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Progressed Claim]"
+                      name="Progressed Claim"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Notes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Claim Notes]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Notes]"
+                      name="Claim Notes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Comments on this audit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Comments on this audit]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Comments on this audit]"
+                      name="Comments on this audit"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Consultant Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consultant Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Audit Date]"
+                      dataType="date"
+                      name="Audit Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Auditor Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Auditor Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Privacy  ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Privacy  " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Outbound Disclaimer]"
+                      dataType="wstr"
+                      length="255"
+                      name="Outbound Disclaimer" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Claim Review and Searches]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Review and Searches" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Assessment Booking]"
+                      dataType="wstr"
+                      length="255"
+                      name="Assessment Booking" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Hire Car]"
+                      dataType="wstr"
+                      length="255"
+                      name="Hire Car" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Privacy Statement Option]"
+                      dataType="wstr"
+                      length="255"
+                      name="Privacy Statement Option" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Adherence to General Insurance Code of Practice]"
+                      dataType="wstr"
+                      length="255"
+                      name="Adherence to General Insurance Code of Practice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Clarified call understanding]"
+                      dataType="wstr"
+                      length="255"
+                      name="Clarified call understanding" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Updating Third Party Details]"
+                      dataType="wstr"
+                      length="255"
+                      name="Updating Third Party Details" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Providing Correct Information]"
+                      dataType="wstr"
+                      length="255"
+                      name="Providing Correct Information" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Informs and Confirms the Next Steps ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Informs and Confirms the Next Steps " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Customer Service]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Service" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Progressed Claim]"
+                      dataType="wstr"
+                      length="255"
+                      name="Progressed Claim" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Claim Notes]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Notes" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].ExternalColumns[Comments on this audit]"
+                      dataType="wstr"
+                      length="255"
+                      name="Comments on this audit" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Consultant Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Consultant Name]"
+                      name="Consultant Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Claim Number]"
+                      name="Claim Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Audit Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Audit Date]"
+                      name="Audit Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Auditor Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Auditor Name]"
+                      name="Auditor Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Privacy  ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Privacy  ]"
+                      name="Privacy  " />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Outbound Disclaimer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Outbound Disclaimer]"
+                      name="Outbound Disclaimer" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Claim Review and Searches]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Claim Review and Searches]"
+                      name="Claim Review and Searches" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Assessment Booking]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Assessment Booking]"
+                      name="Assessment Booking" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Hire Car]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Hire Car]"
+                      name="Hire Car" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Privacy Statement Option]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Privacy Statement Option]"
+                      name="Privacy Statement Option" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Adherence to General Insurance Code of Practice]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Adherence to General Insurance Code of Practice]"
+                      name="Adherence to General Insurance Code of Practice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Clarified call understanding]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Clarified call understanding]"
+                      name="Clarified call understanding" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Updating Third Party Details]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Updating Third Party Details]"
+                      name="Updating Third Party Details" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Providing Correct Information]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Providing Correct Information]"
+                      name="Providing Correct Information" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Informs and Confirms the Next Steps ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Informs and Confirms the Next Steps ]"
+                      name="Informs and Confirms the Next Steps " />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Customer Service]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Customer Service]"
+                      name="Customer Service" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Progressed Claim]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Progressed Claim]"
+                      name="Progressed Claim" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Claim Notes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Claim Notes]"
+                      name="Claim Notes" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Comments on this audit]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[Comments on this audit]"
+                      name="Comments on this audit" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Privacy Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Privacy Score"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Privacy Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Outbound Disclaimer Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Outbound Disclaimer Score"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Outbound Disclaimer Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Claim Review and Searches Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Claim Review and Searches Score"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Claim Review and Searches Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Adherence to General Insurance Code of Practice Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Adherence to General Insurance Code of Practice Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Adherence to General Insurance Code of Practice Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Assessment Booking Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Assessment Booking Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Assessment Booking Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Hire Car Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Hire Car Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Hire Car Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Privacy Statement Option Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Privacy Statement Option Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Privacy Statement Option Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Clarified Call Understanding Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Clarified Call Understanding Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Clarified Call Understanding Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Updating Third Party Details Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Updating Third Party Details Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Updating Third Party Details Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Providing Correct Information Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Providing Correct Information Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Providing Correct Information Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Informs and Confirms the Next Steps Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Informs and Confirms the Next Steps Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Informs and Confirms the Next Steps Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Customer Service Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Customer Service Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Customer Service Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Progressed Claim Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Progressed Claim Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Progressed Claim Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Claim Notes Score]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Claim Notes Score"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Claim Notes Score]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Score]"
+                      name="Copy of Privacy Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Privacy Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Outbound Disclaimer Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Outbound Disclaimer Score]"
+                      name="Copy of Outbound Disclaimer Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Outbound Disclaimer Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Review and Searches Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Review and Searches Score]"
+                      name="Copy of Claim Review and Searches Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Claim Review and Searches Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Adherence to General Insurance Code of Practice Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Adherence to General Insurance Code of Practice Score]"
+                      name="Copy of Adherence to General Insurance Code of Practice Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Adherence to General Insurance Code of Practice Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Assessment Booking Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Assessment Booking Score]"
+                      name="Copy of Assessment Booking Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Assessment Booking Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hire Car Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hire Car Score]"
+                      name="Copy of Hire Car Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Hire Car Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Statement Option Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Statement Option Score]"
+                      name="Copy of Privacy Statement Option Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Privacy Statement Option Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Clarified Call Understanding Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Clarified Call Understanding Score]"
+                      name="Copy of Clarified Call Understanding Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Clarified Call Understanding Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Updating Third Party Details Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Updating Third Party Details Score]"
+                      name="Copy of Updating Third Party Details Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Updating Third Party Details Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Providing Correct Information Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Providing Correct Information Score]"
+                      name="Copy of Providing Correct Information Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Providing Correct Information Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Informs and Confirms the Next Steps Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Informs and Confirms the Next Steps Score]"
+                      name="Copy of Informs and Confirms the Next Steps Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Informs and Confirms the Next Steps Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Service Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Service Score]"
+                      name="Copy of Customer Service Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Customer Service Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Progressed Claim Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Progressed Claim Score]"
+                      name="Copy of Progressed Claim Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Progressed Claim Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Notes Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Notes Score]"
+                      name="Copy of Claim Notes Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Claim Notes Score]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Privacy  ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Privacy  "
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy  ]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Outbound Disclaimer]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Outbound Disclaimer"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Outbound Disclaimer]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Claim Review and Searches]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Claim Review and Searches"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Review and Searches]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Adherence to General Insurance Code of Practice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Adherence to General Insurance Code of Practice"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Compliiant" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Compliant " || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Compliiant " || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Complaint " || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Compliant" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Complaint" ? "Compliant" : #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Adherence to General Insurance Code of Practice] == "Compliiant" || [Adherence to General Insurance Code of Practice] == "Compliant " || [Adherence to General Insurance Code of Practice] == "Compliiant " || [Adherence to General Insurance Code of Practice] == "Complaint " || [Adherence to General Insurance Code of Practice] == "Compliant" || [Adherence to General Insurance Code of Practice] == "Complaint" ? "Compliant" : [Adherence to General Insurance Code of Practice]</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Updating Third Party Details]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Updating Third Party Details"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]} == "n" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]} == "n/a" ? "N/A" : #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]} == "N/o" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]} == "NO" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]} == "no" ? "No" : #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Updating Third Party Details] == "n" || [Updating Third Party Details] == "n/a" ? "N/A" : [Updating Third Party Details] == "N/o" || [Updating Third Party Details] == "NO" || [Updating Third Party Details] == "no" ? "No" : [Updating Third Party Details]</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Providing Correct Information]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Providing Correct Information"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]}) ? "N/A" : #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL([Providing Correct Information]) ? "N/A" : [Providing Correct Information]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Privacy Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Privacy Score]"
+                      name="Privacy Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy  ]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Privacy  ] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Outbound Disclaimer Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Outbound Disclaimer Score]"
+                      name="Outbound Disclaimer Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Outbound Disclaimer]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Outbound Disclaimer] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Claim Review and Searches Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Claim Review and Searches Score]"
+                      name="Claim Review and Searches Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Review and Searches]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Claim Review and Searches] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Adherence to General Insurance Code of Practice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Adherence to General Insurance Code of Practice"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Assessment Booking]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Assessment Booking"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Assessment Booking]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Hire Car]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Hire Car"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Hire Car]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Privacy Statement Option]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Privacy Statement Option"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy Statement Option]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Clarified call understanding]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Clarified call understanding"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Clarified call understanding]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Updating Third Party Details]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Updating Third Party Details"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Providing Correct Information]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Providing Correct Information"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Informs and Confirms the Next Steps ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Informs and Confirms the Next Steps "
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Informs and Confirms the Next Steps ]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Customer Service]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Customer Service"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Customer Service]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Progressed Claim]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Progressed Claim"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Progressed Claim]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Claim Notes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Claim Notes"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Notes]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Adherence to General Insurance Code of Practice Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Adherence to General Insurance Code of Practice Score]"
+                      name="Adherence to General Insurance Code of Practice Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Adherence to General Insurance Code of Practice]} == "Compliant" ? "1" : "0"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Adherence to General Insurance Code of Practice] == "Compliant" ? "1" : "0"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Assessment Booking Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Assessment Booking Score]"
+                      name="Assessment Booking Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Assessment Booking]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Assessment Booking] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Hire Car Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Hire Car Score]"
+                      name="Hire Car Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Hire Car]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Hire Car] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Privacy Statement Option Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Privacy Statement Option Score]"
+                      name="Privacy Statement Option Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy Statement Option]}),"yes",1) &gt; 0 || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy Statement Option]} == "N/A" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Privacy Statement Option]} == "N/a" ? "1" : "0"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FINDSTRING(LOWER([Privacy Statement Option]),"yes",1) &gt; 0 || [Privacy Statement Option] == "N/A" || [Privacy Statement Option] == "N/a" ? "1" : "0"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Clarified Call Understanding Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Clarified Call Understanding Score]"
+                      name="Clarified Call Understanding Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Clarified call understanding]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Clarified call understanding] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Updating Third Party Details Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Updating Third Party Details Score]"
+                      name="Updating Third Party Details Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]}),"yes",1) &gt; 0 || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Updating Third Party Details]} == "N/A" ? "1" : "0"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FINDSTRING(LOWER([Updating Third Party Details]),"yes",1) &gt; 0 || [Updating Third Party Details] == "N/A" ? "1" : "0"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Providing Correct Information Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Providing Correct Information Score]"
+                      name="Providing Correct Information Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Providing Correct Information]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Providing Correct Information] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Informs and Confirms the Next Steps Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Informs and Confirms the Next Steps Score]"
+                      name="Informs and Confirms the Next Steps Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Informs and Confirms the Next Steps ]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Informs and Confirms the Next Steps ] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Customer Service Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Customer Service Score]"
+                      name="Customer Service Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Customer Service]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Customer Service] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Progressed Claim Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Progressed Claim Score]"
+                      name="Progressed Claim Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Progressed Claim]} == "No" ? "0" : "1"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Progressed Claim] == "No" ? "0" : "1"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Claim Notes Score]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Claim Notes Score]"
+                      name="Claim Notes Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Notes]}),"yes",1) &gt; 0 || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Notes]} == "N/A" ? "1" : "0"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FINDSTRING(LOWER([Claim Notes]),"yes",1) &gt; 0 || [Claim Notes] == "N/A" ? "1" : "0"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Privacy Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Privacy Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Outbound Disclaimer Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Outbound Disclaimer Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Outbound Disclaimer Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Claim Review and Searches Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Claim Review and Searches Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Review and Searches Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Adherence to General Insurance Code of Practice Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Adherence to General Insurance Code of Practice Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Adherence to General Insurance Code of Practice Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Assessment Booking Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Assessment Booking Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Assessment Booking Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Hire Car Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Hire Car Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hire Car Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Privacy Statement Option Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Privacy Statement Option Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Statement Option Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Clarified Call Understanding Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Clarified Call Understanding Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Clarified Call Understanding Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Updating Third Party Details Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Updating Third Party Details Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Updating Third Party Details Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Providing Correct Information Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Providing Correct Information Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Providing Correct Information Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Informs and Confirms the Next Steps Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Informs and Confirms the Next Steps Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Informs and Confirms the Next Steps Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Customer Service Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Customer Service Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Service Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Progressed Claim Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Progressed Claim Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Progressed Claim Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Copy of Claim Notes Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Claim Notes Score"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Notes Score]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Critical Component Score]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Critical Component Score]"
+                      name="Critical Component Score"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Outbound Disclaimer Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Review and Searches Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Assessment Booking Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hire Car Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Statement Option Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Adherence to General Insurance Code of Practice Score]}) / 7</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">([Copy of Privacy Score] + [Copy of Outbound Disclaimer Score] + [Copy of Claim Review and Searches Score] + [Copy of Assessment Booking Score] + [Copy of Hire Car Score] + [Copy of Privacy Statement Option Score] + [Copy of Adherence to General Insurance Code of Practice Score]) / 7</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Non- Critical Component]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Non- Critical Component]"
+                      name="Non- Critical Component"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Clarified Call Understanding Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Updating Third Party Details Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Providing Correct Information Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Informs and Confirms the Next Steps Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Service Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Progressed Claim Score]} + #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Notes Score]}) / 7</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">([Copy of Clarified Call Understanding Score] + [Copy of Updating Third Party Details Score] + [Copy of Providing Correct Information Score] + [Copy of Informs and Confirms the Next Steps Score] + [Copy of Customer Service Score] + [Copy of Progressed Claim Score] + [Copy of Claim Notes Score]) / 7</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[CDS.55]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Consultant Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consultant Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consultant Name]"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Consultant Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Claim Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Claim Number"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Number]"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Claim Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Audit Date]"
+                      cachedDataType="date"
+                      cachedName="Audit Date"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Audit Date]"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Audit Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Auditor Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Auditor Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Auditor Name]"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Comments on this audit]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Comments on this audit"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Comments on this audit]"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Comments on this audit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Critical Component Score]"
+                      cachedDataType="i4"
+                      cachedName="Critical Component Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Critical Component Score]"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Critical Component Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Non- Critical Component]"
+                      cachedDataType="i4"
+                      cachedName="Non- Critical Component"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Non- Critical Component]"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Non- Critical Component]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Overall Audit Score]"
+                      cachedDataType="numeric"
+                      cachedName="Overall Audit Score"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Overall Audit Score]"
+                      lineageId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Output].Columns[Overall Audit Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Privacy Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Privacy Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Privacy Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Outbound Disclaimer Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Outbound Disclaimer Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Outbound Disclaimer Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Outbound Disclaimer Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Claim Review and Searches Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Claim Review and Searches Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Review and Searches Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Review and Searches Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Assessment Booking Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Assessment Booking Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Assessment Booking Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Assessment Booking Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Hire Car Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Hire Car Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hire Car Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hire Car Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Privacy Statement Option Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Privacy Statement Option Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Privacy Statement Option Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Privacy Statement Option Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Clarified Call Understanding Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Clarified Call Understanding Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clarified Call Understanding Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Clarified Call Understanding Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Adherence to General Insurance Code of Practice Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Adherence to General Insurance Code of Practice Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adherence to General Insurance Code of Practice Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Adherence to General Insurance Code of Practice Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Updating Third Party Details Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Updating Third Party Details Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Updating Third Party Details Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Updating Third Party Details Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Providing Correct Information Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Providing Correct Information Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Providing Correct Information Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Providing Correct Information Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Informs and Confirms the Next Steps Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Informs and Confirms the Next Steps Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Informs and Confirms the Next Steps Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Informs and Confirms the Next Steps Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Customer Service Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Customer Service Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Service Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Service Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Progressed Claim Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Progressed Claim Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Progressed Claim Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Progressed Claim Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Claim Notes Score]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Claim Notes Score"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Notes Score]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Claim Notes Score]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consultant Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consultant Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Audit Date]"
+                      dataType="dbTimeStamp"
+                      name="Audit Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Auditor Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Auditor Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Comments on this audit]"
+                      dataType="wstr"
+                      length="255"
+                      name="Comments on this audit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Privacy Score]"
+                      dataType="i4"
+                      name="Privacy Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Outbound Disclaimer Score]"
+                      dataType="i4"
+                      name="Outbound Disclaimer Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Review and Searches Score]"
+                      dataType="i4"
+                      name="Claim Review and Searches Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adherence to General Insurance Code of Practice Score]"
+                      dataType="i4"
+                      name="Adherence to General Insurance Code of Practice Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Assessment Booking Score]"
+                      dataType="i4"
+                      name="Assessment Booking Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hire Car Score]"
+                      dataType="i4"
+                      name="Hire Car Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Privacy Statement Option Score]"
+                      dataType="i4"
+                      name="Privacy Statement Option Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clarified Call Understanding Score]"
+                      dataType="i4"
+                      name="Clarified Call Understanding Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Updating Third Party Details Score]"
+                      dataType="i4"
+                      name="Updating Third Party Details Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Providing Correct Information Score]"
+                      dataType="i4"
+                      name="Providing Correct Information Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Informs and Confirms the Next Steps Score]"
+                      dataType="i4"
+                      name="Informs and Confirms the Next Steps Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Service Score]"
+                      dataType="i4"
+                      name="Customer Service Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Progressed Claim Score]"
+                      dataType="i4"
+                      name="Progressed Claim Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Notes Score]"
+                      dataType="i4"
+                      name="Claim Notes Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Critical Component Score]"
+                      dataType="r8"
+                      name="Critical Component Score" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Non- Critical Component]"
+                      dataType="r8"
+                      name="Non- Critical Component" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Overall Audit Score]"
+                      dataType="r8"
+                      name="Overall Audit Score" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OverallAudit and Auditor"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="OverallAudit and Auditor"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input].Columns[Auditor Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Auditor Name"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Shauna Banane" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Shauna Benane" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Shauna Banane " ? "Shauna Banane" : #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Nina" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Nina " || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Nina Dimaano" || #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]} == "Nina Kei" ? "Nina Dimaano" : [FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]}),"anan",1) &gt; 0 ? "Ana Testa" : [FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]}),"ann",1) &gt; 0 ? "Ana Testa" : [FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]}),"anna",1) &gt; 0 ? "Ana Testa" : [FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]}),"AnnaTesta",1) &gt; 0 ? "Ana Testa" : [FINDSTRING]([LOWER](#{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]}),"testa",1) &gt; 0 ? "Ana Testa" : #{Package\Data Flow Task\Audit Data.Outputs[Excel Source Output].Columns[Auditor Name]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Auditor Name] == "Shauna Banane" || [Auditor Name] == "Shauna Benane" || [Auditor Name] == "Shauna Banane " ? "Shauna Banane" : [Auditor Name] == "Nina" || [Auditor Name] == "Nina " || [Auditor Name] == "Nina Dimaano" || [Auditor Name] == "Nina Kei" ? "Nina Dimaano" : FINDSTRING(LOWER([Auditor Name]),"anan",1) &gt; 0 ? "Ana Testa" : FINDSTRING(LOWER([Auditor Name]),"ann",1) &gt; 0 ? "Ana Testa" : FINDSTRING(LOWER([Auditor Name]),"anna",1) &gt; 0 ? "Ana Testa" : FINDSTRING(LOWER([Auditor Name]),"AnnaTesta",1) &gt; 0 ? "Ana Testa" : FINDSTRING(LOWER([Auditor Name]),"testa",1) &gt; 0 ? "Ana Testa" : [Auditor Name]</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input].Columns[Critical Component Score]"
+                      cachedDataType="i4"
+                      cachedName="Critical Component Score"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Critical Component Score]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input].Columns[Non- Critical Component]"
+                      cachedDataType="i4"
+                      cachedName="Non- Critical Component"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Non- Critical Component]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Output].Columns[Overall Audit Score]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Output].Columns[Overall Audit Score]"
+                      name="Overall Audit Score"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(0.85 * #{Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Critical Component Score]}) + (0.15 * #{Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Non- Critical Component]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(0.85 * [Critical Component Score]) + (0.15 * [Non- Critical Component])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\OverallAudit and Auditor.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\OverallAudit and Auditor.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Audit Data.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{39937157-E5E7-4A8D-BECE-15E10A507430}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{664CEB49-9B96-44A9-B97E-2641E8F27203}"
+          SQLTask:SqlStatementSource="Truncate table [CDS.55];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{35DED1B6-6D70-4452-B739-E9468A90D4F6}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="343,167" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="342,33" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="421,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="958,92" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="177,91" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Data Flow Task\OverallAudit and Auditor"
+          TopLeft="723,94" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task\Derived Column 1"
+          TopLeft="352,94" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task\Derived Column 2"
+          TopLeft="535,93" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="358,167" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Data Flow Task\Audit Data"
+          TopLeft="13,93" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="145,113">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,0"
+              Start="0,0"
+              End="24.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
+          TopLeft="434.75,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="917,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41,0"
+              Start="0,0"
+              End="33.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="33.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="698,114.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25,0"
+              Start="0,0"
+              End="17.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="17.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="254,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.5,3"
+              Start="0,0"
+              End="179.5,-4.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="175.5,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.5,-22.5"
+                    Point2="179.5,-22.5"
+                    Point3="179.5,-18.5" />
+                  <mssgle:LineSegment
+                    End="179.5,-4.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="460.666666666667,167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155.833333333333,-32"
+              Start="0,0"
+              End="155.833333333333,-24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-8.99492385786803" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-8.99492385786803"
+                    Point2="0,-12.994923857868"
+                    Point3="4,-12.994923857868" />
+                  <mssgle:LineSegment
+                    End="151.833333333333,-12.994923857868" />
+                  <mssgle:CubicBezierSegment
+                    Point1="151.833333333333,-12.994923857868"
+                    Point2="155.833333333333,-12.994923857868"
+                    Point3="155.833333333333,-16.994923857868" />
+                  <mssgle:LineSegment
+                    End="155.833333333333,-24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Audit Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

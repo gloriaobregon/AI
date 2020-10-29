@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau"
+  DTS:DTSID="{87B7AB45-C543-499E-A617-A0B8070997FC}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALICZk45tYkif5vZsiFgdCQAAAAACAAAAAAADZgAAwAAAABAAAACyk0lNs1Ue0icpO/xaNRgqAAAAAASAAACgAAAAEAAAAPfJ0GWpE+Xd1POVBQW9+Ex4AAAAlxxMh0wipqERyHdW0eSFNJjs3nBV99nRPTzyYrBwnZOILehBCT9hogLwy8Bnoi5Lib8Soy5E4eAey1feABOQmP7JQjw6DS4nnJF1xYeeXF+4Z19j27p/VX1H2fFRwk757cgRchj/Q7dxcfvXMAPkI5/rj3dklQ2BFAAAADUsKeo9DH8Qs1f8+J8imTXdWfdO</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

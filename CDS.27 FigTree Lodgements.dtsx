@@ -1,0 +1,2119 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/5/2019 9:15:44 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MELNB1121"
+  DTS:CreatorName="APTIGPLC\sanams"
+  DTS:DTSID="{9E4FAC06-13A8-43E7-8228-8E063A001FBE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="CDS 27 FigTree Lodgements"
+  DTS:PackageType="5"
+  DTS:VersionBuild="139"
+  DTS:VersionGUID="{8566B1B5-B0A7-4A1F-9BF9-DB2329796DCB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D21A3E55-D380-4371-A879-67581501ED1F}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Tableau Server Source Files\#27 FigTree Archive.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6C8A21D5-E4DB-4BA7-B133-2F339DE918BB}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU693FpSvuUGAHTemc9ME+gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADVhVzN4J0CIjVLXf5Va/CpAAAAAASAAACgAAAAEAAAAO3JTUe4HIeIjQHQql0d5vEYAAAALiHLZyHEJRZBLNBqPIEex9DC9vBNm8hsFAAAAKH4Kizmb9U865u1b5VhK92djW95</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{bc6a6daa-a7d1-4b83-969b-37d7a2e9c3b8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\27 Figtree Lodgements"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="27 Figtree Lodgements"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CDS.27 Figtree Lodgements]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\27 Figtree Lodgements.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Extract Date]"
+                      cachedDataType="date"
+                      cachedName="Extract Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Extract Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Extract Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Client]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Client"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Client]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Company]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Company"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Company]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Company]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[AFS REF]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AFS REF"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[AFS REF]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[AFS REF]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Input Date]"
+                      cachedDataType="date"
+                      cachedName="Input Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Input Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Input Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Repair Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repair Status"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repair Status]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repair Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[TP Recov Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TP Recov Status"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[TP Recov Status]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[TP Recov Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Finalised]"
+                      cachedDataType="date"
+                      cachedName="Finalised"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Finalised]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Finalised]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Re-open Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Re-open Status"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-open Status]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-open Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Re-opened?]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Re-opened?"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-opened?]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-opened?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Reopened Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Reopened Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Reopened Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Fault]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fault"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Fault]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Fault]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Accident Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Accident Type"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Type]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Incident Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Incident Location"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Incident Location]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Incident Location]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Rebate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rebate"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rebate]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rebate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Accident Address]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Accident Address"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Address]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Address]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Accident Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Accident Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Repairer Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repairer Name"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Name]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Repairer Pocstcode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repairer Pocstcode"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Pocstcode]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Pocstcode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Rprt Recd Assessor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rprt Recd Assessor"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rprt Recd Assessor]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rprt Recd Assessor]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Rego no]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rego no"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rego no]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rego no]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Date In]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date In"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date In]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date In]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[Date Out]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date Out"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date Out]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Out]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[RV to date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RV to date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV to date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV to date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[RV Start]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RV Start"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Start]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Start]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[RV Finish]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RV Finish"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Finish]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Finish]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].Columns[InsClNo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InsClNo"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[InsClNo]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[InsClNo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Extract Date]"
+                      dataType="dbDate"
+                      name="Extract Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Company]"
+                      dataType="wstr"
+                      length="255"
+                      name="Company" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[AFS REF]"
+                      dataType="wstr"
+                      length="255"
+                      name="AFS REF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Input Date]"
+                      dataType="dbDate"
+                      name="Input Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repair Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repair Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[TP Recov Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP Recov Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Finalised]"
+                      dataType="dbDate"
+                      name="Finalised" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-open Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Re-open Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-opened?]"
+                      dataType="wstr"
+                      length="255"
+                      name="Re-opened?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Reopened Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reopened Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fault" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Incident Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rebate]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Address]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Pocstcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Pocstcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rprt Recd Assessor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rprt Recd Assessor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rego no]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rego no" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date In]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date In" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date Out]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date Out" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV to date]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV to date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Start]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Finish]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV Finish" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input].ExternalColumns[InsClNo]"
+                      dataType="wstr"
+                      length="255"
+                      name="InsClNo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\27 Figtree Lodgements.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\27 Figtree Lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\27 Figtree Lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\27 Figtree Lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\27 Figtree lodgements"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="27 Figtree lodgements"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CDS.27 Figtree Lodgements]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\27 Figtree lodgements.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Extract Date]"
+                      cachedDataType="date"
+                      cachedName="Extract Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Extract Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Extract Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Client]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Client"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Client]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Company]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Company"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Company]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Company]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[AFS REF]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AFS REF"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[AFS REF]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[AFS REF]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Input Date]"
+                      cachedDataType="date"
+                      cachedName="Input Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Input Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Input Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Repair Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repair Status"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repair Status]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repair Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[TP Recov Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TP Recov Status"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[TP Recov Status]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[TP Recov Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Finalised]"
+                      cachedDataType="date"
+                      cachedName="Finalised"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Finalised]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Finalised]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Re-open Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Re-open Status"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-open Status]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-open Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Re-opened?]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Re-opened?"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-opened?]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-opened?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Reopened Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Reopened Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Reopened Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Fault]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fault"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Fault]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Fault]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Accident Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Accident Type"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Type]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Incident Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Incident Location"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Incident Location]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Incident Location]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Rebate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rebate"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rebate]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rebate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Accident Address]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Accident Address"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Address]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Address]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Accident Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Accident Date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Repairer Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repairer Name"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Name]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Repairer Pocstcode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repairer Pocstcode"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Pocstcode]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Pocstcode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Rprt Recd Assessor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rprt Recd Assessor"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rprt Recd Assessor]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rprt Recd Assessor]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Rego no]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rego no"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rego no]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rego no]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Date In]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date In"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date In]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date In]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[Date Out]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date Out"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date Out]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Out]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[RV to date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RV to date"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV to date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV to date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[RV Start]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RV Start"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Start]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Start]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[RV Finish]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RV Finish"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Finish]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Finish]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].Columns[InsClNo]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="InsClNo"
+                      externalMetadataColumnId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[InsClNo]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[InsClNo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Extract Date]"
+                      dataType="dbDate"
+                      name="Extract Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Company]"
+                      dataType="wstr"
+                      length="255"
+                      name="Company" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[AFS REF]"
+                      dataType="wstr"
+                      length="255"
+                      name="AFS REF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Input Date]"
+                      dataType="dbDate"
+                      name="Input Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repair Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repair Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[TP Recov Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP Recov Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Finalised]"
+                      dataType="dbDate"
+                      name="Finalised" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-open Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Re-open Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Re-opened?]"
+                      dataType="wstr"
+                      length="255"
+                      name="Re-opened?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Reopened Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reopened Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fault" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Incident Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rebate]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Address]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Accident Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Pocstcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Pocstcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rprt Recd Assessor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rprt Recd Assessor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Rego no]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rego no" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date In]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date In" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[Date Out]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date Out" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV to date]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV to date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Start]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[RV Finish]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV Finish" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input].ExternalColumns[InsClNo]"
+                      dataType="wstr"
+                      length="255"
+                      name="InsClNo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\27 Figtree lodgements.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\27 Figtree lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\27 Figtree lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\27 Figtree lodgements.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[Reopened Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Reopened Date"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Case 1]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL([Reopened Date])</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[NotNull]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="NotNull"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 2 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 2 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2 1.Inputs[Derived Column Input].Columns[Reopened Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Reopened Date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},[FINDSTRING](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},"/",1) + 1,3) + [SUBSTRING](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},1,[FINDSTRING](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},"/",1)) + [RIGHT](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},4)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING([Reopened Date],FINDSTRING([Reopened Date],"/",1) + 1,3) + SUBSTRING([Reopened Date],1,FINDSTRING([Reopened Date],"/",1)) + RIGHT([Reopened Date],4)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2 1.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 3"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 3"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input].Columns[Reopened Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Reopened Date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]}) ? NULL(DT_WSTR,255) : (#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]} == "?") ? [REPLACE](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},"?",NULL(DT_WSTR,255)) : (#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]} == "Reopened D") ? [REPLACE](#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]},"?",NULL(DT_WSTR,255)) : (#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]} == "") ? NULL(DT_WSTR,255) : #{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL([Reopened Date]) ? NULL(DT_WSTR,255) : ([Reopened Date] == "?") ? REPLACE([Reopened Date],"?",NULL(DT_WSTR,255)) : ([Reopened Date] == "Reopened D") ? REPLACE([Reopened Date],"?",NULL(DT_WSTR,255)) : ([Reopened Date] == "") ? NULL(DT_WSTR,255) : [Reopened Date]</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Data$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Extract Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Extract Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Extract Date]"
+                      name="Extract Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Client]"
+                      name="Client"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Company]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Company]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Company]"
+                      name="Company"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[AFS REF]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[AFS REF]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[AFS REF]"
+                      name="AFS REF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Input Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Input Date]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Input Date]"
+                      name="Input Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repair Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repair Status]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repair Status]"
+                      name="Repair Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[TP Recov Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[TP Recov Status]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[TP Recov Status]"
+                      name="TP Recov Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Finalised]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Finalised]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Finalised]"
+                      name="Finalised"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-open Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Re-open Status]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-open Status]"
+                      name="Re-open Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-opened?]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Re-opened?]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Re-opened?]"
+                      name="Re-opened?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Reopened Date]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Reopened Date]"
+                      name="Reopened Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Fault]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fault]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Fault]"
+                      name="Fault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Accident Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Type]"
+                      name="Accident Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Incident Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Incident Location]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Incident Location]"
+                      name="Incident Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rebate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rebate]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rebate]"
+                      name="Rebate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Accident Address]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Address]"
+                      name="Accident Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Accident Date]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Accident Date]"
+                      name="Accident Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repairer Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Name]"
+                      name="Repairer Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Pocstcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repairer Pocstcode]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Repairer Pocstcode]"
+                      name="Repairer Pocstcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rprt Recd Assessor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rprt Recd Assessor]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rprt Recd Assessor]"
+                      name="Rprt Recd Assessor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rego no]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rego no]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Rego no]"
+                      name="Rego no"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date In]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date In]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date In]"
+                      name="Date In"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Out]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Out]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Date Out]"
+                      name="Date Out"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV to date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[RV to date]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV to date]"
+                      name="RV to date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Start]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[RV Start]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Start]"
+                      name="RV Start"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Finish]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[RV Finish]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[RV Finish]"
+                      name="RV Finish"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[InsClNo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[InsClNo]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[InsClNo]"
+                      name="InsClNo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Extract Date]"
+                      dataType="date"
+                      name="Extract Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Company]"
+                      dataType="wstr"
+                      length="255"
+                      name="Company" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[AFS REF]"
+                      dataType="wstr"
+                      length="255"
+                      name="AFS REF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Input Date]"
+                      dataType="date"
+                      name="Input Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repair Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repair Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[TP Recov Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP Recov Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Finalised]"
+                      dataType="date"
+                      name="Finalised" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Re-open Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Re-open Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Re-opened?]"
+                      dataType="wstr"
+                      length="255"
+                      name="Re-opened?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Reopened Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Reopened Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fault" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Accident Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Incident Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rebate]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Accident Address]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Accident Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Accident Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repairer Pocstcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Pocstcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rprt Recd Assessor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rprt Recd Assessor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Rego no]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rego no" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date In]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date In" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Out]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date Out" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[RV to date]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV to date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[RV Start]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[RV Finish]"
+                      dataType="wstr"
+                      length="255"
+                      name="RV Finish" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[InsClNo]"
+                      dataType="wstr"
+                      length="255"
+                      name="InsClNo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Extract Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Extract Date]"
+                      name="Extract Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Client]"
+                      name="Client" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Company]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Company]"
+                      name="Company" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[AFS REF]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[AFS REF]"
+                      name="AFS REF" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Input Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Input Date]"
+                      name="Input Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Repair Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Repair Status]"
+                      name="Repair Status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[TP Recov Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[TP Recov Status]"
+                      name="TP Recov Status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Finalised]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Finalised]"
+                      name="Finalised" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Re-open Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Re-open Status]"
+                      name="Re-open Status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Re-opened?]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Re-opened?]"
+                      name="Re-opened?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Reopened Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Reopened Date]"
+                      name="Reopened Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Fault]"
+                      name="Fault" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Accident Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Accident Type]"
+                      name="Accident Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Incident Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Incident Location]"
+                      name="Incident Location" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Rebate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Rebate]"
+                      name="Rebate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Accident Address]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Accident Address]"
+                      name="Accident Address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Accident Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Accident Date]"
+                      name="Accident Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Repairer Name]"
+                      name="Repairer Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Repairer Pocstcode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Repairer Pocstcode]"
+                      name="Repairer Pocstcode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Rprt Recd Assessor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Rprt Recd Assessor]"
+                      name="Rprt Recd Assessor" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Rego no]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Rego no]"
+                      name="Rego no" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Date In]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Date In]"
+                      name="Date In" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Date Out]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Date Out]"
+                      name="Date Out" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[RV to date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[RV to date]"
+                      name="RV to date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[RV Start]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[RV Start]"
+                      name="RV Start" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[RV Finish]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[RV Finish]"
+                      name="RV Finish" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[InsClNo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[InsClNo]"
+                      name="InsClNo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Case 1]"
+              endId="Package\Data Flow Task\27 Figtree lodgements.Inputs[OLE DB Destination Input]"
+              name="Case 1"
+              startId="Package\Data Flow Task\Conditional Split.Outputs[Case 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\27 Figtree Lodgements.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 2 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[NotNull]"
+              endId="Package\Data Flow Task\Derived Column 2 1.Inputs[Derived Column Input]"
+              name="NotNull"
+              startId="Package\Data Flow Task\Conditional Split.Outputs[NotNull]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3475b126-fda0-44b6-a699-ef70e141c573}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6C8A21D5-E4DB-4BA7-B133-2F339DE918BB}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table [CDS.27 FigTree Lodgements]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{ea0aaff6-c105-4a78-a357-fa7508fa9115}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task"
+          TopLeft="222,241" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="223,97" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="302,139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,102"
+              Start="0,0"
+              End="0,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Data Flow Task\Derived Column 3"
+          TopLeft="289,119" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data Flow Task\Conditional Split"
+          TopLeft="348,193" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Data Flow Task\27 Figtree lodgements"
+          TopLeft="424,409" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Data Flow Task\Excel Source"
+          TopLeft="305,47" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task\Derived Column 2 1"
+          TopLeft="243,308" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Data Flow Task\27 Figtree Lodgements"
+          TopLeft="217,417" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="373.5,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="330,350">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.5,67"
+              Start="0,0"
+              End="-18.5,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-14.5,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.5,33.5"
+                    Point2="-18.5,33.5"
+                    Point3="-18.5,37.5" />
+                  <mssgle:LineSegment
+                    End="-18.5,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="371.5,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55,32"
+              Start="0,0"
+              End="55,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="51,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51,16"
+                    Point2="55,16"
+                    Point3="55,20" />
+                  <mssgle:LineSegment
+                    End="55,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Case 1]"
+          TopLeft="451.333333333333,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.6666666666667,174"
+              Start="0,0"
+              End="65.6666666666667,166.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.6532156368222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.6532156368222"
+                    Point2="0,70.6532156368222"
+                    Point3="4,70.6532156368222" />
+                  <mssgle:LineSegment
+                    End="61.6666666666667,70.6532156368222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.6666666666667,70.6532156368222"
+                    Point2="65.6666666666667,70.6532156368222"
+                    Point3="65.6666666666667,74.6532156368222" />
+                  <mssgle:LineSegment
+                    End="65.6666666666667,166.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.6152473958334,75.6532156368222,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[NotNull]"
+          TopLeft="426.5,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-96.5,73"
+              Start="0,0"
+              End="-96.5,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="-4,36.5" />
+                  <mssgle:LineSegment
+                    End="-92.5,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-92.5,36.5"
+                    Point2="-96.5,36.5"
+                    Point3="-96.5,40.5" />
+                  <mssgle:LineSegment
+                    End="-96.5,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-64.67212890625,41.5,32.8442578125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\27 Figtree lodgements">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\27 Figtree Lodgements">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

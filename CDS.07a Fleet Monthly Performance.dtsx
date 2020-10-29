@@ -1,0 +1,968 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2019 4:01:40 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MELNB1121"
+  DTS:CreatorName="APTIGPLC\sanams"
+  DTS:DTSID="{B3C9BC45-F3B3-4541-8867-925BAF07EB45}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="CDS 07a Fleet Monthly Performance"
+  DTS:PackageType="5"
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{76E0E085-2BFE-4742-BE89-40B244A65FF3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{14DDC7AC-13DA-49EA-8D15-C2B0ADCBCD66}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\Source_Data\Fast Track Data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BAAD9BB7-1D7F-4B61-8380-873F3E95A402}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU693FpSvuUGAHTemc9ME+gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD24GLxivH+KGaOi4S8W7YkAAAAAASAAACgAAAAEAAAAH+yDtHeELu4Fi/yOGbkThcYAAAAO7O5kX3axYSQumGPkvz2x8ozZdvqM1d8FAAAACBePoFMeQslb1RtfV2/I9Dtz8Uy</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2964E585-EA8C-4A5E-9109-D72BB8485283}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="rowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Export to Destination"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A83D0819-D924-4201-8D94-DFAB24A35FE4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Export to Destination"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Export to Destination\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Export to Destination\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export to Destination\Data Conversion.Inputs[Data Conversion Input].Columns[Last Reopen Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Last Reopen Date"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Last Reopen Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Export to Destination\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last Reopen Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last Reopen Date]"
+                      name="Copy of Last Reopen Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Last Reopen Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Export to Destination\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export to Destination\FT Staging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="FT Staging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FT.FT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    [Consolidator] as  [Consolidator],
+    [Client] as [Client],
+    [Claim Number] as [Claim Number],
+    [Report Date] as [Report Date] ,
+    [Status] as [Status],
+    [Last Reopen Date] as [Last Reopen Date],
+    [Fault] as [Fault],
+    [TP Involvement] as [TP Involvement],
+    [Closed Date] as [Closed Date],
+    [Incident Code] as [Incident Code],
+    CASE WHEN 
+        CHARINDEX('animal', LOWER([Incident Code])) &gt; 0 THEN 'Animal Strike' 
+        WHEN 
+        (CHARINDEX('hail', LOWER([Incident Code])) &gt; 0 OR  CHARINDEX('storm', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('flood', LOWER([Incident Code])) &gt; 0 )THEN 'Hail/Storm/Flood'
+        WHEN
+        (CHARINDEX('hit and run', LOWER([Incident Code])) &gt; 0 OR  CHARINDEX('- attempted', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('vandal', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('unrecovered', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('stolen', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('personal items', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('theft', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('fire', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('by pedestrian', LOWER([Incident Code])) &gt; 0)THEN 'Fire / Vandalism / Theft / Hit &amp; Run'
+        WHEN
+        (CHARINDEX('load lost', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('hit by object', LOWER([Incident Code])) &gt; 0) THEN 'Hit by Object'
+        WHEN
+        (CHARINDEX('rear', LOWER([Incident Code])) &gt; 0) THEN 'Hit Rear'
+        WHEN
+        (CHARINDEX('reversing', LOWER([Incident Code])) &gt; 0) THEN 'Reversing'
+        WHEN
+        (CHARINDEX('parked', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('stationary', LOWER([Incident Code])) &gt; 0) THEN 'Hit Stationary / Parked Vehicle'
+        WHEN
+        (CHARINDEX('left road', LOWER([Incident Code])) &gt; 0) THEN 'Lost Control'
+        WHEN
+        (CHARINDEX('multiple collision', LOWER([Incident Code])) &gt; 0) THEN 'Multiple Vehicle'
+        WHEN
+        (CHARINDEX('diverge', LOWER([Incident Code])) &gt; 0 OR  CHARINDEX('fails to giveway', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('lanes', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('kerb', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('turning vehicle', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('from driveway', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('car door', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('fails to giveway', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('roundabout', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('red light', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('right hand turn', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('u turn', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('hit pedestrian', LOWER([Incident Code])) &gt; 0)THEN 'Right of Way'
+        WHEN
+        (CHARINDEX('windscreen', LOWER([Incident Code])) &gt; 0) THEN 'Windscreen'
+        WHEN
+        (CHARINDEX('breach', LOWER([Incident Code])) &gt; 0) THEN 'Contract Breach'
+        WHEN
+        (CHARINDEX('coles trailer recovery', LOWER([Incident Code])) &gt; 0) THEN 'Client Specific Trailer Recovery'
+        WHEN
+        (CHARINDEX('L3L - Miscellaneous Incident - Client at Fault', LOWER([Incident Code])) &gt; 0) THEN 'Other Driver Error'
+        WHEN
+
+        (CHARINDEX('alleged incident', LOWER([Incident Code])) &gt; 0 OR  CHARINDEX('tyre blowout', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('old damage', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('equipment fault', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('w4l - other', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('miscellaneous', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('incident details unknown', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('separation', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('pre-sale rect', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('road rage', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('fuel', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('jack-knife', LOWER([Incident Code])) &gt; 0 OR CHARINDEX('rental', LOWER([Incident Code])) &gt; 0 OR CHARINDEX(lower('C6R - Contractor Recovery'), lower([Incident Code])) &gt; 0 OR [Incident Code] IS NULL) THEN 'All Other Incidents'
+        ELSE '**Error Please Check **' 
+    END [Incident Code Group],
+
+    CASE WHEN
+        ((CHARINDEX('R',[Fault])) &gt; 0 OR (CHARINDEX('U',[Fault]) &gt;0 AND CHARINDEX('Y',[TP Involvement]) &gt; 0)) OR ((CHARINDEX('L',[Fault]) &gt; 0 AND (CHARINDEX('Coles Trailers',[Client]) &gt; 0))) THEN 'Recoveries'
+        WHEN
+        (CHARINDEX('L',[Fault]) &gt; 0 AND CHARINDEX('Y',[TP Involvement]) &gt; 0) OR (CHARINDEX('U',[Fault]) &gt; 0 AND (CHARINDEX('X1U - Unrecovered',LOWER([Incident Code])) &gt; 0)) THEN 'Settlements'
+    ELSE 'Settlements'
+    END [IG Team]
+
+FROM [FT.FT]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export to Destination\FT Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Incident Code Group]"
+                      length="36"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Incident Code Group]"
+                      name="Incident Code Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[IG Team]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[IG Team]"
+                      length="11"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[IG Team]"
+                      name="IG Team"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Claim Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Claim Number]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Claim Number]"
+                      name="Claim Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Consolidator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Consolidator]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Consolidator]"
+                      name="Consolidator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Client]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Client]"
+                      name="Client"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Report Date]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Report Date]"
+                      name="Report Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Last Reopen Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Last Reopen Date]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Last Reopen Date]"
+                      name="Last Reopen Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Fault]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Fault]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Fault]"
+                      name="Fault"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[TP Involvement]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[TP Involvement]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[TP Involvement]"
+                      name="TP Involvement"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Closed Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Closed Date]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Closed Date]"
+                      name="Closed Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Incident Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Incident Code]"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Incident Code]"
+                      name="Incident Code"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      name="Incident Code Group" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[IG Team]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="IG Team" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Number" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Last Reopen Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Last Reopen Date" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fault" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[TP Involvement]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP Involvement" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Closed Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Closed Date" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].ExternalColumns[Incident Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Code" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Consolidator]"
+                      name="Consolidator" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Client]"
+                      name="Client" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Claim Number]"
+                      name="Claim Number" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Report Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Report Date]"
+                      name="Report Date" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Last Reopen Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Last Reopen Date]"
+                      name="Last Reopen Date" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Fault]"
+                      name="Fault" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[TP Involvement]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[TP Involvement]"
+                      name="TP Involvement" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Closed Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Closed Date]"
+                      name="Closed Date" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Incident Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Incident Code]"
+                      name="Incident Code" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[Incident Code Group]"
+                      name="Incident Code Group" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[IG Team]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[IG Team]"
+                      name="IG Team" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export to Destination\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[CDS.07a Fleet Monthly Performance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export to Destination\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Consolidator]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Consolidator"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consolidator]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Consolidator]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Client]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Client"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Client]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Claim Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Claim Number"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Number]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Claim Number]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Report Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Report Date"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Report Date]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Incident Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Incident Code"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Incident Code]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Incident Code]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fault]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fault"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fault]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Fault]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TP Involvement]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TP Involvement"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TP Involvement]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[TP Involvement]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Closed Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Closed Date"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Closed Date]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Closed Date]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Incident Code Group]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="36"
+                      cachedName="Incident Code Group"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Incident Code Group]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[Incident Code Group]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IG Team]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="IG Team"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IG Team]"
+                      lineageId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output].Columns[IG Team]" />
+                    <inputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Last Reopen Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Copy of Last Reopen Date"
+                      externalMetadataColumnId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last Reopen Date]"
+                      lineageId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Last Reopen Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consolidator]"
+                      dataType="wstr"
+                      length="255"
+                      name="Consolidator" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Claim Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim Number" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Report Date]"
+                      dataType="dbTimeStamp"
+                      name="Report Date" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last Reopen Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Last Reopen Date" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fault]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fault" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TP Involvement]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP Involvement" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Closed Date]"
+                      dataType="dbTimeStamp"
+                      name="Closed Date" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Incident Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Incident Code" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      name="Incident Code Group" />
+                    <externalMetadataColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IG Team]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="IG Team" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Export to Destination\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export to Destination\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export to Destination\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export to Destination\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Export to Destination.Paths[Data Conversion Output]"
+              endId="Package\Export to Destination\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Export to Destination\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Export to Destination.Paths[OLE DB Source Output]"
+              endId="Package\Export to Destination\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export to Destination\FT Staging.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D5AD0197-DAA2-4064-B412-85861A5609B8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BAAD9BB7-1D7F-4B61-8380-873F3E95A402}"
+          SQLTask:SqlStatementSource="truncate table [CDS.07a Fleet Monthly Performance]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6652A8B9-4F76-4194-B7AE-0F86A968E88F}"
+      DTS:From="Package\Truncate table task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Export to Destination" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Export to Destination"
+          TopLeft="308,196" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Truncate table task"
+          TopLeft="311,100" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="397.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Export to Destination">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Export to Destination\FT Staging"
+          TopLeft="227,45" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Export to Destination\Data Conversion"
+          TopLeft="204,139" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Export to Destination\OLE DB Destination"
+          TopLeft="198,255" />
+        <EdgeLayout
+          Id="Package\Export to Destination.Paths[Data Conversion Output]"
+          TopLeft="286.5,181">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export to Destination.Paths[OLE DB Source Output]"
+          TopLeft="289,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export to Destination\FT Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export to Destination\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

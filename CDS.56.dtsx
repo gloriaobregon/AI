@@ -1,0 +1,1919 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/23/2019 9:44:40 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AU00065"
+  DTS:CreatorName="IGAD\LiaoG"
+  DTS:DTSID="{31FAC2F6-1A49-4EA4-BAB7-333BEBFBC32D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="CDS 56"
+  DTS:PackageType="5"
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{097F5E75-B512-4FAB-8B8C-8D380DA597AE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Assessments]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{648F9581-E849-4ED8-A1B6-CE1F336EE61C}"
+      DTS:ObjectName="Assessments">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\56 Internal_Suncorp MTP State Split\Conversion &amp; Opps FY 20-21.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conversions]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{1B569D28-D447-4597-B4CD-76FB48E3FFCF}"
+      DTS:ObjectName="Conversions">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\56 Internal_Suncorp MTP State Split\Conversion &amp; Opps FY 20-21.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C6AB8906-06D1-4098-A611-582A7A2056BD}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA8LSz1tw2q0GZyAN10YvF1gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD5IovppnA6AqwWA5pVDIGIAAAAAASAAACgAAAAEAAAAC3FWUb6U0S8kgsXDwXcxNkYAAAA/i4wXoSFldIIpUs3hiu+7zj0664mqrJKFAAAACbGNYVLxqlXru29NyOWhLun5s7j</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Opps]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{85ACA1A9-904F-47C0-AA71-0B7B50012D65}"
+      DTS:ObjectName="Opps">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\56 Internal_Suncorp MTP State Split\Conversion &amp; Opps FY 20-21.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{127AA8D6-8401-4DA4-86A8-199B5CD53F51}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Assessments"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Assessments"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Assessments$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Assessments.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Assessments]"
+                  connectionManagerRefId="Package.ConnectionManagers[Assessments]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[CLAIM_NUMBER]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]"
+                      name="CLAIM_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[ASSESSED_DATE]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSED_DATE]"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[ASSESSED_DATE]"
+                      name="ASSESSED_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[LICENSEPLATE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[LICENSEPLATE]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[LICENSEPLATE]"
+                      name="LICENSEPLATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[LOSS_STATE_NAME]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[BOOKING_DATE]"
+                      dataType="date"
+                      name="BOOKING_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[BOOKING_TIME]"
+                      dataType="wstr"
+                      length="255"
+                      name="BOOKING_TIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[LICENSEPLATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="LICENSEPLATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLAIM_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[BRAND_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="BRAND_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSED_DATE]"
+                      dataType="date"
+                      name="ASSESSED_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSED_MONTH]"
+                      dataType="date"
+                      name="ASSESSED_MONTH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSED_FINYEAR]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSED_FINYEAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[PNETQUOTEREQUEST_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      name="PNETQUOTEREQUEST_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSMENTMODE]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENTMODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSED_COST]"
+                      dataType="r8"
+                      name="ASSESSED_COST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_STATUS]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_CENTRE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_CENTRE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_CENTRE_TYPE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_CENTRE_TYPE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[CATEGORY_CONVERSION_RATE_SLA]"
+                      dataType="wstr"
+                      length="255"
+                      name="CATEGORY_CONVERSION_RATE_SLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[CATEGORY_CONVERSION_FEE]"
+                      dataType="wstr"
+                      length="255"
+                      name="CATEGORY_CONVERSION_FEE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[COMBINED_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMBINED_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[COMBINED_COST_SUBTYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMBINED_COST_SUBTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[BOOKING_ADDED_USER]"
+                      dataType="wstr"
+                      length="255"
+                      name="BOOKING_ADDED_USER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[BOOKING_ADDED_TEAM_SUMMARY]"
+                      dataType="wstr"
+                      length="255"
+                      name="BOOKING_ADDED_TEAM_SUMMARY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[EVENT_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="EVENT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[TOTAL_REPAIR_JOB1]"
+                      dataType="r8"
+                      name="TOTAL_REPAIR_JOB1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[TOTAL_LOSS_JOB1]"
+                      dataType="r8"
+                      name="TOTAL_LOSS_JOB1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[TOTAL_JOBS]"
+                      dataType="r8"
+                      name="TOTAL_JOBS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="LOSS_STATE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[SC_LOSSPOSTCODEASNUMBER]"
+                      dataType="r8"
+                      name="SC_LOSSPOSTCODEASNUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[DUPLICATE_ASSESSMENT_FLAG]"
+                      dataType="wstr"
+                      length="255"
+                      name="DUPLICATE_ASSESSMENT_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[INCIDENT_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="INCIDENT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[MTP_ACTIVITY]"
+                      dataType="wstr"
+                      length="255"
+                      name="MTP_ACTIVITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_PROCESS_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_PROCESS_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[REPAIRER_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="REPAIRER_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[TP_INSURED]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP_INSURED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].ExternalColumns[TP_INSURER]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP_INSURER" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[CLAIM_NUMBER]"
+                      name="CLAIM_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[ASSESSED_DATE]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[ASSESSED_DATE]"
+                      name="ASSESSED_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[LICENSEPLATE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[LICENSEPLATE]"
+                      name="LICENSEPLATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Error Output].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Conversions"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Conversions"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Conversions$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Conversions.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conversions]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conversions]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[CLAIM_NUMBER]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]"
+                      name="CLAIM_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[ASSESSED_DATE]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSED_DATE]"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[ASSESSED_DATE]"
+                      name="ASSESSED_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[LICENSEPLATE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[LICENSEPLATE]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[LICENSEPLATE]"
+                      name="LICENSEPLATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[LOSS_STATE_NAME]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLAIM_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[BRAND_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="BRAND_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSED_DATE]"
+                      dataType="date"
+                      name="ASSESSED_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSED_MONTH]"
+                      dataType="date"
+                      name="ASSESSED_MONTH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSED_FINYEAR]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSED_FINYEAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[PNETQUOTEREQUEST_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      name="PNETQUOTEREQUEST_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSMENTMODE]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENTMODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[LICENSEPLATE]"
+                      dataType="wstr"
+                      length="255"
+                      name="LICENSEPLATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSED_COST]"
+                      dataType="r8"
+                      name="ASSESSED_COST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_STATUS]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_CENTRE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_CENTRE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_CENTRE_TYPE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_CENTRE_TYPE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[CATEGORY_CONVERSION_RATE_SLA]"
+                      dataType="wstr"
+                      length="255"
+                      name="CATEGORY_CONVERSION_RATE_SLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[CATEGORY_CONVERSION_FEE]"
+                      dataType="wstr"
+                      length="255"
+                      name="CATEGORY_CONVERSION_FEE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[COMBINED_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMBINED_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[COMBINED_COST_SUBTYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMBINED_COST_SUBTYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[BOOKING_ADDED_USER]"
+                      dataType="wstr"
+                      length="255"
+                      name="BOOKING_ADDED_USER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[BOOKING_ADDED_TEAM_SUMMARY]"
+                      dataType="wstr"
+                      length="255"
+                      name="BOOKING_ADDED_TEAM_SUMMARY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[BOOKING_DATE]"
+                      dataType="date"
+                      name="BOOKING_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[BOOKING_TIME]"
+                      dataType="wstr"
+                      length="255"
+                      name="BOOKING_TIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[EVENT_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="EVENT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[TOTAL_REPAIR_JOB1]"
+                      dataType="r8"
+                      name="TOTAL_REPAIR_JOB1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[TOTAL_LOSS_JOB1]"
+                      dataType="r8"
+                      name="TOTAL_LOSS_JOB1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[TOTAL_JOBS]"
+                      dataType="r8"
+                      name="TOTAL_JOBS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="LOSS_STATE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[SC_LOSSPOSTCODEASNUMBER]"
+                      dataType="r8"
+                      name="SC_LOSSPOSTCODEASNUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[DUPLICATE_ASSESSMENT_FLAG]"
+                      dataType="wstr"
+                      length="255"
+                      name="DUPLICATE_ASSESSMENT_FLAG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[INCIDENT_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="INCIDENT_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[MTP_ACTIVITY]"
+                      dataType="wstr"
+                      length="255"
+                      name="MTP_ACTIVITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[ASSESSMENT_PROCESS_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="ASSESSMENT_PROCESS_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[REPAIRER_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="REPAIRER_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[TP_INSURED]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP_INSURED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].ExternalColumns[TP_INSURER]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP_INSURER" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[CLAIM_NUMBER]"
+                      name="CLAIM_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[ASSESSED_DATE]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[ASSESSED_DATE]"
+                      name="ASSESSED_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[LICENSEPLATE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[LICENSEPLATE]"
+                      name="LICENSEPLATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Error Output].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Data Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Data Source]"
+                      name="Data Source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Opps"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Opps"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Data Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Data Source]"
+                      name="Data Source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Assessments"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Assessments"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Data Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Data Source]"
+                      name="Data Source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Conversions"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Conversions"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[CDS.56]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CLAIM_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CLAIM_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CLAIM_NUMBER]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CLAIM_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTIVITY_MONTH]"
+                      cachedDataType="date"
+                      cachedName="ACTIVITY_MONTH"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVITY_MONTH]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_MONTH]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LOSS_STATE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LOSS_STATE_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOSS_STATE_NAME]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[LOSS_STATE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Table Names]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Table Names"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Table Names]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Table Names]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ASSESSED_DATE]"
+                      cachedDataType="date"
+                      cachedName="ASSESSED_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ASSESSED_DATE]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ASSESSED_DATE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      name="CLAIM_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVITY_MONTH]"
+                      dataType="dbTimeStamp"
+                      name="ACTIVITY_MONTH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      dataType="wstr"
+                      length="255"
+                      name="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="LOSS_STATE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Table Names]"
+                      dataType="wstr"
+                      length="255"
+                      name="Table Names" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ASSESSED_DATE]"
+                      dataType="dbTimeStamp"
+                      name="ASSESSED_DATE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Opss"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Opss"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Opps$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Opss.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Opps]"
+                  connectionManagerRefId="Package.ConnectionManagers[Opps]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[CCR_CC_CLAIM_CLAIMNUMBER]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]"
+                      name="CLAIM_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[ACTIVITY_MONTH]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_MONTH]"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[ACTIVITY_MONTH]"
+                      name="ACTIVITY_MONTH"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      name="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[LOSS_STATE_NAME]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[CCR_CC_CLAIM_CLAIMNUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      name="CCR_CC_CLAIM_CLAIMNUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_MONTH]"
+                      dataType="date"
+                      name="ACTIVITY_MONTH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_FINYEAR]"
+                      dataType="wstr"
+                      length="255"
+                      name="ACTIVITY_FINYEAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_CLOSE_DATE]"
+                      dataType="date"
+                      name="ACTIVITY_CLOSE_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[CONSULTANT_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="CONSULTANT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_CLOSE_TEAM_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="ACTIVITY_CLOSE_TEAM_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      dataType="wstr"
+                      length="255"
+                      name="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[TOTAL_MTP_ACTIVITIES]"
+                      dataType="r8"
+                      name="TOTAL_MTP_ACTIVITIES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[TP_VEHICLES]"
+                      dataType="r8"
+                      name="TP_VEHICLES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[MTP_OPPORTUNITY]"
+                      dataType="r8"
+                      name="MTP_OPPORTUNITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="LOSS_STATE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[SC_LOSSPOSTCODEASNUMBER]"
+                      dataType="r8"
+                      name="SC_LOSSPOSTCODEASNUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].ExternalColumns[INCIDENT_TYPE]"
+                      dataType="wstr"
+                      length="255"
+                      name="INCIDENT_TYPE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[CCR_CC_CLAIM_CLAIMNUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[CCR_CC_CLAIM_CLAIMNUMBER]"
+                      name="CCR_CC_CLAIM_CLAIMNUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ACTIVITY_MONTH]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ACTIVITY_MONTH]"
+                      name="ACTIVITY_MONTH" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      name="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Error Output].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[CLAIM_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CLAIM_NUMBER"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CLAIM_NUMBER]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[ACTIVITY_MONTH]"
+                      cachedDataType="date"
+                      cachedName="ACTIVITY_MONTH"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[ACTIVITY_MONTH]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_MONTH]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[LOSS_STATE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LOSS_STATE_NAME"
+                      lineageId="Package\Data Flow Task\Opss.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[LOSS_STATE_NAME]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[Data Source]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Data Source"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Data Source]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Table Names]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[CLAIM_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CLAIM_NUMBER"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CLAIM_NUMBER]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[LOSS_STATE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LOSS_STATE_NAME"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[LOSS_STATE_NAME]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[Data Source]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Data Source"
+                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output].Columns[Data Source]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Table Names]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[ASSESSED_DATE]"
+                      cachedDataType="date"
+                      cachedName="ASSESSED_DATE"
+                      lineageId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output].Columns[ASSESSED_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ASSESSED_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[CLAIM_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CLAIM_NUMBER"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[CLAIM_NUMBER]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CLAIM_NUMBER]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[LOSS_STATE_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LOSS_STATE_NAME"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[LOSS_STATE_NAME]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[LOSS_STATE_NAME]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[Data Source]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Data Source"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[Data Source]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Table Names]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3].Columns[ASSESSED_DATE]"
+                      cachedDataType="date"
+                      cachedName="ASSESSED_DATE"
+                      lineageId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output].Columns[ASSESSED_DATE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ASSESSED_DATE]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CLAIM_NUMBER]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[CLAIM_NUMBER]"
+                      name="CLAIM_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_MONTH]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_MONTH]"
+                      name="ACTIVITY_MONTH" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ACTIVITY_CLOSE_TEAM_NAME_SUMMARY]"
+                      name="ACTIVITY_CLOSE_TEAM_NAME_SUMMARY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[LOSS_STATE_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[LOSS_STATE_NAME]"
+                      name="LOSS_STATE_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Table Names]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[Table Names]"
+                      name="Table Names" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ASSESSED_DATE]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[ASSESSED_DATE]"
+                      name="ASSESSED_DATE" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Assessments.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output1]"
+              endId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Conversions.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output2]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Opss.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Union All Output 1]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{13288879-D326-425E-8024-50E37DCD1346}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C6AB8906-06D1-4098-A611-582A7A2056BD}"
+          SQLTask:SqlStatementSource="Truncate table [CDS.56];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C8898D98-D59C-4E14-A2DB-9995AB37D430}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="343,167" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="342,33" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="421,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="478,205" />
+        <NodeLayout
+          Size="102,42"
+          Id="Package\Data Flow Task\Opss"
+          TopLeft="132,13" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column 2"
+          TopLeft="819,94.666666666667" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="113,105" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Data Flow Task\Conversions"
+          TopLeft="834,6.66666666666697" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Data Flow Task\Assessments"
+          TopLeft="459,9" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="456,284" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task\Derived Column 1"
+          TopLeft="454,103" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="537,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="190,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="320.25,58"
+              Start="0,0"
+              End="320.25,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.832884097035" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.832884097035"
+                    Point2="0,37.832884097035"
+                    Point3="4,37.832884097035" />
+                  <mssgle:LineSegment
+                    End="316.25,37.832884097035" />
+                  <mssgle:CubicBezierSegment
+                    Point1="316.25,37.832884097035"
+                    Point2="320.25,37.832884097035"
+                    Point3="320.25,41.832884097035" />
+                  <mssgle:LineSegment
+                    End="320.25,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="540,247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
+          TopLeft="186.5,55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output1]"
+          TopLeft="899,48.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="532,51">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="896,136.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-329.25,68.333333333333"
+              Start="0,0"
+              End="-329.25,60.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5732255166215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.5732255166215"
+                    Point2="0,44.5732255166215"
+                    Point3="-4,44.5732255166215" />
+                  <mssgle:LineSegment
+                    End="-325.25,44.5732255166215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-325.25,44.5732255166215"
+                    Point2="-329.25,44.5732255166215"
+                    Point3="-329.25,48.5732255166215" />
+                  <mssgle:LineSegment
+                    End="-329.25,60.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Opss">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Conversions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Assessments">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

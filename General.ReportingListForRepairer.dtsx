@@ -1,0 +1,1347 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/25/2019 3:06:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MELNB2130"
+  DTS:CreatorName="APTIGPLC\liaog"
+  DTS:DTSID="{89486B12-F7C1-4576-BDDC-77A5AC793173}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="General ReportingListForRepairer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{134DFA21-31BD-413D-AD4A-E970C3F3848E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D074B160-69F7-4769-B378-F446967C7ED5}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ad.innovation.group\au\Files\Group\Reporting &amp; Insights\Live\Source_Data\IG Network Repairer Listing - Master.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8DF55EAA-66A6-47B7-84B0-09F6AA62A471}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAIrkRUTGrSkuIKsLRAoYjyQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACtAVyL49BDvOxY0ZY19rbpAAAAAASAAACgAAAAEAAAADnqWYTMMMNQUULlsNnOFeoYAAAAuHMsOiFpuIS6XrdbtWtBhveFeIA9whR5FAAAAI94ZxXKuL3l9m3qgdgdfQnvs5DC</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{49EB3CB9-1FD6-481B-A072-53F20DABB5C3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[General.RepairerListForReporting]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Repairer Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repairer Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Name]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Repairer Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Preferred Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Preferred Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Preferred Name]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Preferred Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Network]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Network"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Network]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Network]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Heavy Capability ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Heavy Capability "
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Heavy Capability ]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Heavy Capability ]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Insurance]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Insurance"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Insurance]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Insurance]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fleet]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fleet"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fleet]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Fleet]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Warriewood]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Warriewood"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Warriewood]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Warriewood]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Standard]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Standard"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Standard]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Standard]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Prestige]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Prestige"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Prestige]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Prestige]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Heavy Vehicle]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Heavy Vehicle"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Heavy Vehicle]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Heavy Vehicle]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Motorbike]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Motorbike"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Motorbike]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Motorbike]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Suburb]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Suburb"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suburb]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Suburb]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Active]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Active"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Active]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Date joined]"
+                      cachedDataType="date"
+                      cachedName="Date joined"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date joined]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Date joined]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Date terminated]"
+                      cachedDataType="date"
+                      cachedName="Date terminated"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date terminated]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Date terminated]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Paint Brand]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Paint Brand"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paint Brand]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Paint Brand]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PPG Start]"
+                      cachedDataType="date"
+                      cachedName="PPG Start"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PPG Start]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[PPG Start]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PPG End]"
+                      cachedDataType="date"
+                      cachedName="PPG End"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PPG End]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[PPG End]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Postcode]"
+                      cachedDataType="r8"
+                      cachedName="Postcode"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Postcode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Comments]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Comments"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Comments]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Comments]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rebate Percentage]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rebate Percentage"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rebate Percentage]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Rebate Percentage]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rebate Cap + GST]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rebate Cap + GST"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rebate Cap + GST]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Rebate Cap + GST]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Phone Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Phone Number"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone Number]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Phone Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Longitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Preferred Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Preferred Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Network]"
+                      dataType="wstr"
+                      length="255"
+                      name="Network" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Heavy Capability ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Heavy Capability " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Insurance]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fleet]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fleet" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Warriewood]"
+                      dataType="wstr"
+                      length="255"
+                      name="Warriewood" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Standard]"
+                      dataType="wstr"
+                      length="255"
+                      name="Standard" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Prestige]"
+                      dataType="wstr"
+                      length="255"
+                      name="Prestige" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Heavy Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      name="Heavy Vehicle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Motorbike]"
+                      dataType="wstr"
+                      length="255"
+                      name="Motorbike" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Suburb]"
+                      dataType="wstr"
+                      length="255"
+                      name="Suburb" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Active]"
+                      dataType="wstr"
+                      length="255"
+                      name="Active" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date joined]"
+                      dataType="dbTimeStamp"
+                      name="Date joined" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date terminated]"
+                      dataType="dbTimeStamp"
+                      name="Date terminated" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paint Brand]"
+                      dataType="wstr"
+                      length="255"
+                      name="Paint Brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PPG Start]"
+                      dataType="dbTimeStamp"
+                      name="PPG Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PPG End]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPG End" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Postcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Comments]"
+                      dataType="wstr"
+                      length="255"
+                      name="Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rebate Percentage]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate Percentage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rebate Cap + GST]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate Cap + GST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="255"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Repair List"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Repair List"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Repairer List for reporting$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Repair List.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Preferred Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Preferred Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Preferred Name]"
+                      name="Preferred Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Network]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Network]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Network]"
+                      name="Network"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Heavy Capability ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Heavy Capability ]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Heavy Capability ]"
+                      name="Heavy Capability "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Insurance]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Insurance]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Insurance]"
+                      name="Insurance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Fleet]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Fleet]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Fleet]"
+                      name="Fleet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Warriewood]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Warriewood]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Warriewood]"
+                      name="Warriewood"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Standard]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Standard]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Standard]"
+                      name="Standard"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Prestige]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Prestige]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Prestige]"
+                      name="Prestige"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Heavy Vehicle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Heavy Vehicle]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Heavy Vehicle]"
+                      name="Heavy Vehicle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Motorbike]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Motorbike]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Motorbike]"
+                      name="Motorbike"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Suburb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Suburb]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Suburb]"
+                      name="Suburb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[State]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Active]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Active]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Active]"
+                      name="Active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Date joined]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Date joined]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Date joined]"
+                      name="Date joined"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Date terminated]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Date terminated]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Date terminated]"
+                      name="Date terminated"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Paint Brand]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Paint Brand]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Paint Brand]"
+                      name="Paint Brand"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[PPG Start]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[PPG Start]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[PPG Start]"
+                      name="PPG Start"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[PPG End]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[PPG End]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[PPG End]"
+                      name="PPG End"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Postcode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Postcode]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Postcode]"
+                      name="Postcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Comments]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Comments]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Comments]"
+                      name="Comments"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Rebate Percentage]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Rebate Percentage]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Rebate Percentage]"
+                      name="Rebate Percentage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Rebate Cap + GST]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Rebate Cap + GST]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Rebate Cap + GST]"
+                      name="Rebate Cap + GST"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Address]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Email]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Phone Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Phone Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Phone Number]"
+                      name="Phone Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Description]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Glass Only]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Glass Only]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Glass Only]"
+                      name="Glass Only"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Repairer Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Repairer Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].Columns[Repairer Name]"
+                      name="Repairer Name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Preferred Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Preferred Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Network]"
+                      dataType="wstr"
+                      length="255"
+                      name="Network" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Heavy Capability ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Heavy Capability " />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Insurance]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Fleet]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fleet" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Warriewood]"
+                      dataType="wstr"
+                      length="255"
+                      name="Warriewood" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Standard]"
+                      dataType="wstr"
+                      length="255"
+                      name="Standard" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Prestige]"
+                      dataType="wstr"
+                      length="255"
+                      name="Prestige" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Heavy Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      name="Heavy Vehicle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Motorbike]"
+                      dataType="wstr"
+                      length="255"
+                      name="Motorbike" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Suburb]"
+                      dataType="wstr"
+                      length="255"
+                      name="Suburb" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="255"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Active]"
+                      dataType="wstr"
+                      length="255"
+                      name="Active" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Date joined]"
+                      dataType="date"
+                      name="Date joined" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Date terminated]"
+                      dataType="date"
+                      name="Date terminated" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Paint Brand]"
+                      dataType="wstr"
+                      length="255"
+                      name="Paint Brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[PPG Start]"
+                      dataType="date"
+                      name="PPG Start" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[PPG End]"
+                      dataType="date"
+                      name="PPG End" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Postcode]"
+                      dataType="r8"
+                      name="Postcode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Comments]"
+                      dataType="wstr"
+                      length="255"
+                      name="Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Rebate Percentage]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate Percentage" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Rebate Cap + GST]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rebate Cap + GST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="255"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Phone Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      dataType="cy"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Glass Only]"
+                      dataType="wstr"
+                      length="255"
+                      name="Glass Only" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[TP PRO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TP PRO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[THL]"
+                      dataType="wstr"
+                      length="255"
+                      name="THL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[COLES ONLINE]"
+                      dataType="wstr"
+                      length="255"
+                      name="COLES ONLINE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[COLES]"
+                      dataType="wstr"
+                      length="255"
+                      name="COLES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repairer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output].ExternalColumns[Audanet Usage]"
+                      dataType="wstr"
+                      length="255"
+                      name="Audanet Usage" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Repairer Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Repairer Name]"
+                      name="Repairer Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Preferred Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Preferred Name]"
+                      name="Preferred Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Network]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Network]"
+                      name="Network" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Comments]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Comments]"
+                      name="Comments" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Heavy Capability ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Heavy Capability ]"
+                      name="Heavy Capability " />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Insurance]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Insurance]"
+                      name="Insurance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Fleet]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Fleet]"
+                      name="Fleet" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Warriewood]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Warriewood]"
+                      name="Warriewood" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Glass Only]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Glass Only]"
+                      name="Glass Only" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Standard]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Standard]"
+                      name="Standard" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Prestige]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Prestige]"
+                      name="Prestige" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Heavy Vehicle]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Heavy Vehicle]"
+                      name="Heavy Vehicle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Motorbike]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Motorbike]"
+                      name="Motorbike" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Suburb]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Suburb]"
+                      name="Suburb" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Active]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Active]"
+                      name="Active" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Date joined]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Date joined]"
+                      name="Date joined" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Date terminated]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Date terminated]"
+                      name="Date terminated" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Paint Brand]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Paint Brand]"
+                      name="Paint Brand" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[PPG Start]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[PPG Start]"
+                      name="PPG Start" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[PPG End]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[PPG End]"
+                      name="PPG End" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Rebate Percentage]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Rebate Percentage]"
+                      name="Rebate Percentage" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Rebate Cap + GST]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Rebate Cap + GST]"
+                      name="Rebate Cap + GST" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Phone Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Phone Number]"
+                      name="Phone Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Description]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Postcode]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Postcode]"
+                      name="Postcode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Latitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Latitude]"
+                      name="Latitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Longitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[Longitude]"
+                      name="Longitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Repair List.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Repair List.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F49A7F87-D897-40D2-B569-DAB044F2D183}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate table"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8DF55EAA-66A6-47B7-84B0-09F6AA62A471}"
+          SQLTask:SqlStatementSource="Truncate table [General.RepairerListForReporting];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{442C48AD-A3BE-4CCE-BC3A-3F56FD087F44}"
+      DTS:From="Package\Truncate table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task"
+          TopLeft="602,301" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Truncate table"
+          TopLeft="602,140" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="677.5,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,119"
+              Start="0,0"
+              End="0,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Data Flow Task\Repair List"
+          TopLeft="254,60" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="232,239" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="320.75,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,137"
+              Start="0,0"
+              End="0,129.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,129.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Repair List">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

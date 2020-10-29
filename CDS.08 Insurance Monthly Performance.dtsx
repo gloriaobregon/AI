@@ -1,0 +1,1546 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/14/2019 11:22:43 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MELNB1121"
+  DTS:CreatorName="APTIGPLC\sanams"
+  DTS:DTSID="{CEF3EAA7-0670-455E-AB24-0347F18AE6D1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="Package6"
+  DTS:PackageType="5"
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{0B0D115E-C3F3-4F29-990A-B64C06F760CF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{94A34140-D090-4F07-B014-9A8595A53E5C}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\Reporting &amp; Insights\Tableau Server Source Files\#8b CFT Open Claims History.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E6C99E25-0AE6-487E-9E53-C3168CD262D7}"
+      DTS:ObjectName="ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ig-seau-dev-reportingau-data.database.windows.net;User ID=data_teamau;Initial Catalog=AI;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAU693FpSvuUGAHTemc9ME+gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADhE9nPVXgaMJGMIvmkf5/CAAAAAASAAACgAAAAEAAAAHlL8LiJTE70lt1yivoOhQoYAAAAFl3j3tfLinc6uoWcjB7hc1UulP9l5Lt0FAAAAMTt5IqNHMLchlrf9rgKbNyRHknC</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F95737FC-8B44-48CD-86D6-C2748AF88A23}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\CDS 08"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="CDS 08"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[CDS.08 Insurance Monthly Performance Summary]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\CDS 08.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Policy Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Policy Type"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Policy Type]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Policy Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Claim No]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Claim No"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Claim No]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Claim No]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Loss Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Loss Type"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Loss Type]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Loss Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Registered Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Registered Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Registered Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Registered Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Settlement Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Settlement Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Settlement Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Settlement Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Total Payments (GST exc)]"
+                      cachedDataType="r8"
+                      cachedName="Total Payments (GST exc)"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Payments (GST exc)]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Payments (GST exc)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Recovery to Date]"
+                      cachedDataType="r8"
+                      cachedName="Recovery to Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Recovery to Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Recovery to Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Recovery Estimate]"
+                      cachedDataType="r8"
+                      cachedName="Recovery Estimate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Recovery Estimate]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Recovery Estimate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Last Reopen Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Last Reopen Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Last Reopen Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Last Reopen Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Intermediary]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Intermediary"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Intermediary]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Intermediary]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Insurer Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Insurer Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Insurer Name]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Insurer Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Vehicle Classification]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle Classification"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Classification]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Classification]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Vehicle Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle Type"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Type]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Vehicle Make]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle Make"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Make]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Make]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Vehicle Model]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle Model"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Model]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Model]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Vehicle Registration]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Vehicle Registration"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Registration]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Registration]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Vehicle Year]"
+                      cachedDataType="r8"
+                      cachedName="Vehicle Year"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Year]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Year]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Driver Lastname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Driver Lastname"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver Lastname]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Lastname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Driver Firstname]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Driver Firstname"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver Firstname]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Firstname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Driver DOB]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Driver DOB"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver DOB]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver DOB]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Driver Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Driver Code"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver Code]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Excess Fee]"
+                      cachedDataType="r8"
+                      cachedName="Excess Fee"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Excess Fee]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Excess Fee]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Total Excess Charged]"
+                      cachedDataType="r8"
+                      cachedName="Total Excess Charged"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Excess Charged]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Charged]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Total Excess Outstanding]"
+                      cachedDataType="r8"
+                      cachedName="Total Excess Outstanding"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Excess Outstanding]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Outstanding]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Total Excess Received]"
+                      cachedDataType="r8"
+                      cachedName="Total Excess Received"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Excess Received]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Received]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Total Loss]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Total Loss"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Loss]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Loss]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Division]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Division"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Division]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Incident Code Group]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="34"
+                      cachedName="Incident Code Group"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Incident Code Group]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Incident Code Group]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].Columns[Motor Fault Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Motor Fault Code"
+                      externalMetadataColumnId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Motor Fault Code]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Motor Fault Code]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Policy Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Policy Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Claim No]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Loss Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Loss Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Registered Date]"
+                      dataType="dbDate"
+                      name="Registered Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Settlement Date]"
+                      dataType="dbDate"
+                      name="Settlement Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Payments (GST exc)]"
+                      dataType="numeric"
+                      name="Total Payments (GST exc)"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Recovery to Date]"
+                      dataType="numeric"
+                      name="Recovery to Date"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Recovery Estimate]"
+                      dataType="numeric"
+                      name="Recovery Estimate"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Last Reopen Date]"
+                      dataType="dbDate"
+                      name="Last Reopen Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Intermediary]"
+                      dataType="wstr"
+                      length="255"
+                      name="Intermediary" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Insurer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Classification]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Classification" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Make]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Make" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Model]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Model" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Registration]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Registration" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Vehicle Year]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver Lastname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Lastname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver Firstname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Firstname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver DOB]"
+                      dataType="dbDate"
+                      name="Driver DOB" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Driver Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Excess Fee]"
+                      dataType="numeric"
+                      name="Excess Fee"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Excess Charged]"
+                      dataType="numeric"
+                      name="Total Excess Charged"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Excess Outstanding]"
+                      dataType="numeric"
+                      name="Total Excess Outstanding"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Excess Received]"
+                      dataType="numeric"
+                      name="Total Excess Received"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Total Loss]"
+                      dataType="wstr"
+                      length="255"
+                      name="Total Loss" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      name="Incident Code Group" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input].ExternalColumns[Motor Fault Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Motor Fault Code" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\CDS 08.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\CDS 08.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\CDS 08.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\CDS 08.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\SQL Script"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SQL Script"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select b.*,
+
+CASE WHEN
+         [Division] != 'Motor' THEN [Division]         
+         WHEN
+         [Incident Code Group] = 'Hail/Storm/Natural Event' 
+         OR [Incident Code Group] = 'Fire/Vandalism/Theft' 
+         OR [Incident Code Group] = 'Windscreen' 
+         OR [Incident Code Group] = ' Glass' THEN 'Excluded'
+         WHEN
+         [Incident Code Group] = 'Single Vehicle' THEN 'Single Vehicle'
+         WHEN
+         CHARINDEX('tp at fault', LOWER([Loss Type])) &gt; 0  OR 
+         CHARINDEX('t/p hit', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('tp pulled', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('tp merged', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('tp opened', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('tp disobeyed', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('recovery', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('unknown', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('intersection collision', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('voluntary worker', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('warranty', LOWER([Loss Type])) &gt; 0 OR 
+         [Incident Code Group] = 'Hit Insured in Rear' THEN 'Not At Fault'
+         WHEN
+         CHARINDEX('at fault', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('insured hit', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('insured pulled', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('insured open', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('merged', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('insured disobeyed', LOWER([Loss Type])) &gt; 0 OR 
+         CHARINDEX('loss of Control', LOWER([Loss Type])) &gt; 0 OR
+          CHARINDEX('lost Control', LOWER([Loss Type])) &gt; 0 OR 
+          CHARINDEX('animal', LOWER([Loss Type])) &gt; 0 OR 
+          CHARINDEX('damaged whilst parked', LOWER([Loss Type])) &gt; 0 OR 
+          CHARINDEX('reversed into t/p', LOWER([Loss Type])) &gt; 0 OR 
+          CHARINDEX('tipping', LOWER([Loss Type])) &gt; 0 OR 
+          CHARINDEX('hit an object', LOWER([Loss Type])) &gt; 0 OR
+          [Incident Code Group] = 'Hit TP in Rear' THEN 'At Fault'
+          WHEN
+          CHARINDEX('other', LOWER([Loss Type])) &gt; 0 THEN 'Not At Fault'
+         ELSE '*** NEED TO CHECK  ***'
+         END [Motor Fault Code]
+
+         from         (
+            Select a.*, 
+            
+CASE WHEN 
+        CHARINDEX('animal', LOWER([Loss Type])) &gt; 0 THEN 'Animal'
+        WHEN
+        CHARINDEX('burn out', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('blow out', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('breakdown', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('boiler explosion', LOWER([Loss Type])) &gt; 0 THEN 'Eqquipment breakdown'
+        WHEN
+        CHARINDEX('jewell', LOWER([Loss Type])) &gt; 0 THEN 'Jewellery'
+        WHEN
+        CHARINDEX('liquid', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('water', LOWER([Loss Type])) &gt; 0 THEN 'Escape of Liquid'
+        WHEN
+        CHARINDEX('hail', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('storm', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('flood', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('natural', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('lightning', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('earthquake', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('subsidence', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('landship', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('collapse', LOWER([Loss Type])) &gt; 0 THEN 'Hail/Storm/Natural Event'
+        WHEN
+        CHARINDEX('malicious', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('- attempted', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('vandal', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('uncovered', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('stolen', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('personal items', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('theft', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('fire', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('burglary', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('break-in', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('Incident with pedestrian', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('break &amp; enter', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('deliberate', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('roberry', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('smash &amp; grab', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('fraud', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('larceney', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('m030-robbery of person', LOWER([Loss Type])) &gt; 0  THEN 'Fire/Vandalism/Theft'
+        WHEN
+        CHARINDEX('load lost', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('hit by object', LOWER([Loss Type])) &gt; 0  THEN 'Hit by Object'
+        WHEN
+        CHARINDEX('lease guarantee', LOWER([Loss Type])) &gt; 0  Or CHARINDEX('rent default', LOWER([Loss Type])) &gt; 0  THEN 'Rental Guarantee'
+        WHEN
+        CHARINDEX('t/p hit insured in rear', LOWER([Loss Type])) &gt; 0  THEN 'Hit Insured in Rear'
+        WHEN
+        CHARINDEX('hit t/p in rear', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('hit tp in rear', LOWER([Loss Type])) &gt; 0   THEN 'Hit TP in Rear'
+        WHEN
+        CHARINDEX('reversed', LOWER([Loss Type])) &gt; 0  THEN 'Reversing'
+        WHEN
+        CHARINDEX('control', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('left road', LOWER([Loss Type])) &gt; 0  THEN 'Loss of Control'
+        WHEN
+        CHARINDEX('parked', LOWER([Loss Type])) &gt; 0   OR CHARINDEX('stationary', LOWER([Loss Type])) &gt; 0   THEN 'Hit Stationary / Parked Vehicle'
+        WHEN
+        CHARINDEX('single', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('hit an object', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('hit another object', LOWER([Loss Type])) &gt; 0  THEN 'Single Vehicle'
+        WHEN
+        CHARINDEX('multi', LOWER([Loss Type])) &gt; 0    THEN 'Multiple Vehicle'
+        WHEN
+        CHARINDEX('diverge', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('fails to giveway', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('lanes', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('kerb', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('turning vehicle', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('from drieway', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('car door', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('roundabout', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('red light', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('traffic light', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('right hand turn', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('u turn', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('hit pedestrian', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('- collision', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('stop/giveway', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('overtaking', LOWER([Loss Type])) &gt; 0  OR CHARINDEX('- intersection', LOWER([Loss Type])) &gt; 0  THEN 'Right of Way'
+        WHEN
+        [Division] = 'Property' AND CHARINDEX('glass', LOWER([Loss Type])) &gt; 0  THEN 'Glass'
+        WHEN
+        ([Division] = 'Motor' AND CHARINDEX('windscreen', LOWER([Loss Type])) &gt; 0 ) OR ([Division] = 'Motor' AND CHARINDEX('glass', LOWER([Loss Type])) &gt; 0) OR ([Division] = 'Motor' AND CHARINDEX('CC - Glass', LOWER([Loss Type])) &gt; 0)  THEN 'Windscreen'
+        WHEN
+        CHARINDEX('at fault', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('hit', LOWER([Loss Type])) &gt; 0 THEN 'General Collision'
+        WHEN
+        CHARINDEX('accidental', LOWER([Loss Type])) &gt; 0 THEN 'Accidental Loss/Damage'
+        WHEN
+        CHARINDEX('fusion', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('smoke', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('power surge', LOWER([Loss Type])) &gt; 0 THEN 'Fusion/Smoke/Power Surge'
+        WHEN
+        CHARINDEX('impact', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('building damage', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('property damage', LOWER([Loss Type])) &gt; 0 THEN 'Prperty Impact'
+        WHEN
+        CHARINDEX('loss of contents', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('loss of personal', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('money and stock', LOWER([Loss Type])) &gt; 0 THEN 'Loss of Contents/Personal Property'
+        WHEN
+        CHARINDEX('alleged incident', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('tyre blowout', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('old damage', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('equipment fault', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('miscellaneous', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('incident details unknown', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('seperation', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('pre-sales rect', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('Warranty', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('other', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('tipping', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('impact', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('water', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('accident', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('legal', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('spoilage', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('power surge', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('unknown', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('riots', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('tree roots', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('vet', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('general property', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('transit', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('liability', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('voluntary worker', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('business interruption', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('explosion', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('audit', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('workmanship', LOWER([Loss Type])) &gt; 0 Or CHARINDEX('temporary removal', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('fall including', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('m015-landslip', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('ial run off', LOWER([Loss Type])) &gt; 0 OR [Loss Type] IS NULL  THEN 'All Other'
+        WHEN
+        CHARINDEX('personal injury', LOWER([Loss Type])) &gt; 0 THEN 'Personal Injury'
+        WHEN
+        CHARINDEX('insolvency', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('cttt', LOWER([Loss Type])) &gt; 0 THEN 'Insolvency / Suspension'
+        WHEN
+        CHARINDEX('death', LOWER([Loss Type])) &gt; 0 OR CHARINDEX('disapp', LOWER([Loss Type])) &gt; 0 THEN 'Death / Disappearance'
+        WHEN
+        CHARINDEX('cause yet to be determined', LOWER([Loss Type])) &gt; 0 THEN 'Cause Yet To Be Determined'
+        WHEN
+        left([Policy Type],3) = 'SUA' THEN 'Other SUA' 
+
+        ELSE '******Error Please Check **'
+         END [Incident Code Group]
+
+
+from
+
+(Select 
+[Policy Type],
+[Claim No],
+[Loss Type],
+[Registered Date],
+[Settlement Date],
+[Total Payments (GST exc)],
+[Recovery to Date],
+[Recovery Estimate],
+[Last Reopen Date],
+[Intermediary],
+[Insurer Name],
+[Vehicle Classification],
+[Vehicle Type],
+[Vehicle Make],
+[Vehicle Model],
+[Vehicle Registration],
+[Vehicle Year],
+[Driver Lastname],
+[Driver Firstname],
+[Driver DOB],
+[Driver Code],
+[Excess Fee],
+[Total Excess Charged],
+[Total Excess Outstanding],
+[Total Excess Received],
+[Total Loss],
+
+CASE WHEN 
+        CHARINDEX('SUA -', LOWER([Policy Type])) &gt; 0 THEN 'SUA' 
+        WHEN 
+        CHARINDEX('Builders Warranty', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('NSW Warranty', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Owner Builder', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Calliden Commercial', LOWER([Policy Type])) &gt; 0 THEN 'Builders Warranty'
+        WHEN
+        CHARINDEX('Property', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Landlord', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Building And Content', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Home and Content', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Argis Elite Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Argis Extra Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Calliden Elite Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Calliden Everyday Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Calliden Extra Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Steadfast Elite Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Steadfast Extra Care', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('NSW Trustees', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('IBNA ', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Unisys Run Off', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('NLC Lease Guarantee', LOWER([Policy Type])) &gt; 0 THEN 'Property'      
+        WHEN
+        CHARINDEX('Motor', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Driving', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Bike', LOWER([Policy Type])) &gt; 0  
+        OR CHARINDEX('Porsche', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Motorcycle', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Steadfast Commercial Motor Vehicle Insurance', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Driver', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('dirt', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('E-Bike', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('E-Car', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Rideshare', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('fleet', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Farm Motor', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Classic', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('High Performance', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Scooter', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('MY40', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('MY 40', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Insurance Box', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Taxi', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('ABF - Elite', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Affinity Risk', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('All Credit', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Leasing', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Progressive', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Dawes Famous', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Paradigm', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Selectus InsureWise', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('car', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Young &amp; Cool', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Truck', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('TPPD', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('drive', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('auto', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Australian Reliance', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Coverforce Novated', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('GLA Famous', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Insure Simply', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Freeman Mcm', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('dealership', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Dawes Marque', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Dawes General', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('TEC Finance', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Recreational Vehicle', LOWER([Policy Type])) &gt; 0 
+        OR CHARINDEX('Commercial - QUS', LOWER([Policy Type])) &gt; 0
+		OR CHARINDEX('Payslyp', LOWER([Policy Type])) &gt; 0
+        OR CHARINDEX('Farmsure', LOWER([Policy Type])) &gt; 0
+        OR CHARINDEX('Farmsuree', LOWER([Policy Type])) &gt; 0
+        OR CHARINDEX('The Salary Package People', LOWER([Policy Type])) &gt; 0
+        OR CHARINDEX('Stratton Finance', LOWER([Policy Type])) &gt; 0 THEN 'Motor'
+        ELSE '*** New Policy to be added ***'
+        END [Division]
+
+
+
+
+     FROM [CFT_Monthly]
+
+
+     )a)b</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\SQL Script.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  connectionManagerRefId="Package.ConnectionManagers[ig-seau-dev-reportingau-data.database.windows.net.AI.data_teamau]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Policy Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Policy Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Policy Type]"
+                      name="Policy Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Claim No]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Claim No]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Claim No]"
+                      name="Claim No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Loss Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Loss Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Loss Type]"
+                      name="Loss Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Registered Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Registered Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Registered Date]"
+                      name="Registered Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Settlement Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Settlement Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Settlement Date]"
+                      name="Settlement Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Payments (GST exc)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Payments (GST exc)]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Payments (GST exc)]"
+                      name="Total Payments (GST exc)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Recovery to Date]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Recovery to Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Recovery to Date]"
+                      name="Recovery to Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Recovery Estimate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Recovery Estimate]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Recovery Estimate]"
+                      name="Recovery Estimate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Last Reopen Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Last Reopen Date]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Last Reopen Date]"
+                      name="Last Reopen Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Intermediary]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Intermediary]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Intermediary]"
+                      name="Intermediary"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Insurer Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Insurer Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Insurer Name]"
+                      name="Insurer Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Classification]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Classification]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Classification]"
+                      name="Vehicle Classification"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Type]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Type]"
+                      name="Vehicle Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Make]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Make]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Make]"
+                      name="Vehicle Make"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Model]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Model]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Model]"
+                      name="Vehicle Model"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Registration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Registration]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Registration]"
+                      name="Vehicle Registration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Year]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Vehicle Year]"
+                      name="Vehicle Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Lastname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver Lastname]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Lastname]"
+                      name="Driver Lastname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Firstname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver Firstname]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Firstname]"
+                      name="Driver Firstname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver DOB]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver DOB]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver DOB]"
+                      name="Driver DOB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver Code]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Driver Code]"
+                      name="Driver Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Excess Fee]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Excess Fee]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Excess Fee]"
+                      name="Excess Fee"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Charged]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Excess Charged]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Charged]"
+                      name="Total Excess Charged"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Outstanding]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Excess Outstanding]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Outstanding]"
+                      name="Total Excess Outstanding"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Received]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Excess Received]"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Excess Received]"
+                      name="Total Excess Received"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Loss]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Loss]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Total Loss]"
+                      name="Total Loss"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Division]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Division]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Division]"
+                      name="Division"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Incident Code Group]"
+                      length="34"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Incident Code Group]"
+                      name="Incident Code Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Motor Fault Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Motor Fault Code]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].Columns[Motor Fault Code]"
+                      name="Motor Fault Code"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Policy Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Policy Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Claim No]"
+                      dataType="wstr"
+                      length="255"
+                      name="Claim No" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Loss Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Loss Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Registered Date]"
+                      dataType="dbTimeStamp"
+                      name="Registered Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Settlement Date]"
+                      dataType="dbTimeStamp"
+                      name="Settlement Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Payments (GST exc)]"
+                      dataType="r8"
+                      name="Total Payments (GST exc)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Recovery to Date]"
+                      dataType="r8"
+                      name="Recovery to Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Recovery Estimate]"
+                      dataType="r8"
+                      name="Recovery Estimate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Last Reopen Date]"
+                      dataType="dbTimeStamp"
+                      name="Last Reopen Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Intermediary]"
+                      dataType="wstr"
+                      length="255"
+                      name="Intermediary" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Insurer Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Insurer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Classification]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Classification" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Make]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Make" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Model]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Model" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Registration]"
+                      dataType="wstr"
+                      length="255"
+                      name="Vehicle Registration" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Vehicle Year]"
+                      dataType="r8"
+                      name="Vehicle Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver Lastname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Lastname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver Firstname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Firstname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver DOB]"
+                      dataType="dbTimeStamp"
+                      name="Driver DOB" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Driver Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Driver Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Excess Fee]"
+                      dataType="r8"
+                      name="Excess Fee" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Excess Charged]"
+                      dataType="r8"
+                      name="Total Excess Charged" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Excess Outstanding]"
+                      dataType="r8"
+                      name="Total Excess Outstanding" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Excess Received]"
+                      dataType="r8"
+                      name="Total Excess Received" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Total Loss]"
+                      dataType="wstr"
+                      length="255"
+                      name="Total Loss" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Division]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      name="Incident Code Group" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output].ExternalColumns[Motor Fault Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Motor Fault Code" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Policy Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Policy Type]"
+                      name="Policy Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Claim No]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Claim No]"
+                      name="Claim No" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Loss Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Loss Type]"
+                      name="Loss Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Registered Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Registered Date]"
+                      name="Registered Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Settlement Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Settlement Date]"
+                      name="Settlement Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Payments (GST exc)]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Payments (GST exc)]"
+                      name="Total Payments (GST exc)" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Recovery to Date]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Recovery to Date]"
+                      name="Recovery to Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Recovery Estimate]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Recovery Estimate]"
+                      name="Recovery Estimate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Last Reopen Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Last Reopen Date]"
+                      name="Last Reopen Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Intermediary]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Intermediary]"
+                      name="Intermediary" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Insurer Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Insurer Name]"
+                      name="Insurer Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Classification]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Classification]"
+                      name="Vehicle Classification" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Type]"
+                      name="Vehicle Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Make]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Make]"
+                      name="Vehicle Make" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Model]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Model]"
+                      name="Vehicle Model" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Registration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Registration]"
+                      name="Vehicle Registration" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Year]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Vehicle Year]"
+                      name="Vehicle Year" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver Lastname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver Lastname]"
+                      name="Driver Lastname" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver Firstname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver Firstname]"
+                      name="Driver Firstname" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver DOB]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver DOB]"
+                      name="Driver DOB" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Driver Code]"
+                      name="Driver Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Excess Fee]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Excess Fee]"
+                      name="Excess Fee" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Excess Charged]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Excess Charged]"
+                      name="Total Excess Charged" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Excess Outstanding]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Excess Outstanding]"
+                      name="Total Excess Outstanding" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Excess Received]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Excess Received]"
+                      name="Total Excess Received" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Loss]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Total Loss]"
+                      name="Total Loss" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Division]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Division]"
+                      name="Division" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Incident Code Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="34"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Incident Code Group]"
+                      name="Incident Code Group" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Motor Fault Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[Motor Fault Code]"
+                      name="Motor Fault Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\CDS 08.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\SQL Script.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1C45EFC6-942A-4D1D-AFB5-6757A96501AB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E6C99E25-0AE6-487E-9E53-C3168CD262D7}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table [CDS.08 Insurance Monthly Performance Summary];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8833881D-9F5F-44CA-AEDE-45FE29454E2E}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="338,251" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="333,95" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="417.75,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,114"
+              Start="0,0"
+              End="0,106.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,106.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="116,42"
+          Id="Package\Data Flow Task 1\CDS 08"
+          TopLeft="459,206" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Data Flow Task 1\SQL Script"
+          TopLeft="453,68" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="517.5,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,96"
+              Start="0,0"
+              End="0,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\CDS 08">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\SQL Script">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
